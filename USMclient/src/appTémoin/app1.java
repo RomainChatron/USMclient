@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-
+import vInterface.*;
 
 //import dataBase.UserDB;
 
@@ -15,18 +15,21 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.awt.Toolkit;
 //import com.jgoodies.forms.factories.DefaultComponentFactory;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.Font;
+import java.awt.HeadlessException;
 
 public class app1 {
 
-	private JFrame frmUltimateSocietyMessenger;
+	private HashMap<String, Object> rmi ;
+	public JFrame frmUltimateSocietyMessenger;
 	private JTextField txtUser;
 	private JPasswordField txtPw;
 	//public String userName;
@@ -38,7 +41,7 @@ public class app1 {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					app1 window = new app1();
+					app1 window = new app1(new HashMap<String, Object>());
 					window.frmUltimateSocietyMessenger.setVisible(true);
 
 				} catch (Exception e) {
@@ -52,7 +55,8 @@ public class app1 {
 	/**
 	 * Create the application.
 	 */
-	public app1() {
+	public app1(HashMap<String, Object> rmi) {
+		this.rmi = rmi;
 		initialize();
 	}
 
@@ -102,23 +106,28 @@ public class app1 {
 			public void mouseClicked(MouseEvent arg0) {
 				char[] pw = txtPw.getPassword();
 				String user = txtUser.getText();
-				/*if (UserDB.connect(user, String.valueOf(pw))) {
-					if (user.equalsIgnoreCase("Admin")) {
-						MainMenuAdmin mma = new MainMenuAdmin();
-						mma.setLocationRelativeTo(null);
-						mma.setResizable(false);
-						mma.setVisible(true);
-						frmUltimateSocietyMessenger.dispose();
+				try {
+					if (((_UserDB)rmi.get("UserDB")).connect(user, String.valueOf(pw))) {
+						if (user.equalsIgnoreCase("Admin")) {
+							MainMenuAdmin mma = new MainMenuAdmin();
+							mma.setLocationRelativeTo(null);
+							mma.setResizable(false);
+							mma.setVisible(true);
+							frmUltimateSocietyMessenger.dispose();
+						} else {
+							MainMenu C1 = new MainMenu();
+							C1.setLocationRelativeTo(null);
+							C1.setResizable(false);
+							C1.setVisible(true);
+							frmUltimateSocietyMessenger.dispose();
+						}
 					} else {
-						MainMenu C1 = new MainMenu();
-						C1.setLocationRelativeTo(null);
-						C1.setResizable(false);
-						C1.setVisible(true);
-						frmUltimateSocietyMessenger.dispose();
+						JOptionPane.showMessageDialog(null, "Erreur d'authentification réessayer !");
 					}
-				} else {
-					JOptionPane.showMessageDialog(null, "Erreur d'authentification réessayer !");
-				}*/
+				} catch (HeadlessException | RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		btOk.setBounds(131, 199, 112, 29);

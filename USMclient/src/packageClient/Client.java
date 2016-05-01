@@ -8,6 +8,7 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import appTémoin.app1;
 import vInterface.*;
 
 public class Client {
@@ -21,15 +22,17 @@ public class Client {
 			String IPSERVER = "localhost";
 			int PORT = 54321;
 			String urlObjectBuilder = "rmi://"+IPSERVER+":"+PORT+"/ObjectBuilder";
+			String urlUserDB = "rmi://"+IPSERVER+":"+PORT+"/UserDB";
 			
 			_ObjectBuilder ob = (_ObjectBuilder)Naming.lookup(urlObjectBuilder);
+			_UserDB userdb = (_UserDB)Naming.lookup(urlUserDB);
 			
 			rmi.put("ObjectBuilder", ob);
+			rmi.put("UserDB", userdb);
 			
 			//test
-			Connexion JFCon = new Connexion(rmi);
-			JFCon.setVisible(true);
-			
+			app1 JFCon = new app1(rmi);
+			JFCon.frmUltimateSocietyMessenger.setVisible(true);			
 			
 			
 		}catch (MalformedURLException e) {
