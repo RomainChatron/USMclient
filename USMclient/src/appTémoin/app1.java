@@ -7,9 +7,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-import com.alee.laf.WebLookAndFeel;
 
-import dataBase.UserDB;
+
+//import dataBase.UserDB;
 
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
@@ -18,7 +18,7 @@ import java.awt.event.MouseEvent;
 
 import java.util.ArrayList;
 import java.awt.Toolkit;
-import com.jgoodies.forms.factories.DefaultComponentFactory;
+//import com.jgoodies.forms.factories.DefaultComponentFactory;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.SystemColor;
