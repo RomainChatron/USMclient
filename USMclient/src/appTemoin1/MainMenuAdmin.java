@@ -73,7 +73,7 @@ public class MainMenuAdmin extends JFrame {
 		btDeleteGroup.setHorizontalAlignment(SwingConstants.LEFT);
 		btDeleteGroup.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		btDeleteGroup.setIcon(new ImageIcon(MainMenuAdmin.class.getResource("/appTemoin1/images/delete-user-group-icon-2897.png")));
-		btDeleteGroup.setBounds(237, 245, 200, 50);
+		btDeleteGroup.setBounds(242, 245, 200, 50);
 		contentPane.add(btDeleteGroup);
 		
 		JButton btDeleteUser = new JButton("Supprimer Utilisateur");
@@ -97,8 +97,12 @@ public class MainMenuAdmin extends JFrame {
 		btDeleteUser.setBounds(15, 245, 200, 50);
 		contentPane.add(btDeleteUser);
 		
-		JButton btAddChat = new JButton("Creer Chat");
-		btAddChat.addMouseListener(new MouseAdapter() {
+		JButton btDeleteTask = new JButton("Supprimer T\u00E2che");
+		btDeleteTask.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btDeleteTask.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				CreerChat cc = new CreerChat();
@@ -108,18 +112,32 @@ public class MainMenuAdmin extends JFrame {
 				contentPane.setVisible(false);
 			}
 		});
-		btAddChat.setHorizontalAlignment(SwingConstants.LEFT);
-		btAddChat.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btAddChat.setIcon(new ImageIcon(MainMenuAdmin.class.getResource("/appTemoin1/images/par_chat.png")));
-		btAddChat.setBounds(452, 167, 200, 50);
-		contentPane.add(btAddChat);
+		btDeleteTask.setHorizontalAlignment(SwingConstants.LEFT);
+		btDeleteTask.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		btDeleteTask.setIcon(new ImageIcon(MainMenuAdmin.class.getResource("/appTemoin1/images/DelArticle.png")));
+		btDeleteTask.setBounds(242, 332, 200, 50);
+		contentPane.add(btDeleteTask);
 		
-		JButton btDeleteChat = new JButton("Supprimer Chat");
-		btDeleteChat.setHorizontalAlignment(SwingConstants.LEFT);
-		btDeleteChat.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btDeleteChat.setIcon(new ImageIcon(MainMenuAdmin.class.getResource("/appTemoin1/images/Comment-delete.png")));
-		btDeleteChat.setBounds(452, 245, 200, 50);
-		contentPane.add(btDeleteChat);
+		JButton btDeleteArticle = new JButton("Supprimer Article\r\n");
+		btDeleteArticle.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				DeleteArticle da = new DeleteArticle();
+				da.setLocationRelativeTo(null);
+				da.setResizable(false);
+				da.setVisible(true);
+				contentPane.setVisible(false);
+			}
+		});
+		btDeleteUser.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btDeleteArticle.setHorizontalAlignment(SwingConstants.LEFT);
+		btDeleteArticle.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		btDeleteArticle.setIcon(new ImageIcon(MainMenuAdmin.class.getResource("/appTemoin1/images/delTache.png")));
+		btDeleteArticle.setBounds(452, 245, 200, 50);
+		contentPane.add(btDeleteArticle);
 		
 		JButton btAddTask = new JButton("Affecter T\u00E2che");
 		btAddTask.addMouseListener(new MouseAdapter() {
@@ -138,14 +156,7 @@ public class MainMenuAdmin extends JFrame {
 		btAddTask.setBounds(15, 332, 200, 50);
 		contentPane.add(btAddTask);
 		
-		JButton btAddDiary = new JButton("Cr\u00E9er un journal");
-		btAddDiary.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btAddDiary.setIcon(new ImageIcon(MainMenuAdmin.class.getResource("/appTemoin1/images/windows-journal-viewer-icon.png")));
-		btAddDiary.setHorizontalAlignment(SwingConstants.LEFT);
-		btAddDiary.setBounds(237, 332, 200, 50);
-		contentPane.add(btAddDiary);
-		
-		JButton btAddArticle = new JButton("Creer un article");
+		JButton btAddArticle = new JButton("Creer un Article");
 		btAddArticle.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -163,7 +174,7 @@ public class MainMenuAdmin extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btAddArticle.setBounds(452, 332, 200, 50);
+		btAddArticle.setBounds(452, 167, 200, 50);
 		contentPane.add(btAddArticle);
 		
 		JLabel lblNewLabel = new JLabel("");
@@ -221,7 +232,7 @@ public class MainMenuAdmin extends JFrame {
 		btnDeconnexion.setBackground(Color.BLACK);
 		btnDeconnexion.setForeground(Color.WHITE);
 		btnDeconnexion.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
-		btnDeconnexion.setBounds(587, 409, 133, 29);
+		btnDeconnexion.setBounds(519, 353, 133, 29);
 		contentPane.add(btnDeconnexion);
 	}
 }
