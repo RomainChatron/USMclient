@@ -49,7 +49,7 @@ public class AddTask extends JFrame {
 	public AddTask(HashMap<String, Object> rmi) {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(AddTask.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 		setTitle("Ultimate Society Messenger");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 625, 464);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 102, 204));
@@ -121,11 +121,7 @@ public class AddTask extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				MainMenuAdmin mma = new MainMenuAdmin(rmi);
-				mma.setLocationRelativeTo(null);
-				mma.setResizable(false);
-				mma.setVisible(true);
-				contentPane.setVisible(false);
+				dispose();
 			}
 		});
 		btnNewButton_1.setBackground(Color.BLACK);

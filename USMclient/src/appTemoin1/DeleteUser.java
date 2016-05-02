@@ -71,7 +71,7 @@ public class DeleteUser extends JFrame {
 		JLabel lblNewLabel = new JLabel("Selectionner l'utilisateur");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
-		lblNewLabel.setBounds(15, 124, 192, 20);
+		lblNewLabel.setBounds(118, 91, 192, 20);
 		contentPane.add(lblNewLabel);
 		
 		try {
@@ -79,12 +79,12 @@ public class DeleteUser extends JFrame {
 			String[] allUsers = new String[u.size()+1];
 			allUsers[0] = "Choisissez l'utilisateur..";
 			for (int i=1; i<u.size()+1;i++){
-				allUsers[i] = u.get(i).getUserName()+" : "+u.get(i).getFirstName()+" "+u.get(i).getLastName();
+				allUsers[i] = u.get(i-1).getUserName()+" : "+u.get(i-1).getFirstName()+" "+u.get(i-1).getLastName();
 			}
 			
 			
 			JComboBox cbUsers = new JComboBox(allUsers);
-			cbUsers.setBounds(209, 122, 36, 26);
+			cbUsers.setBounds(61, 118, 281, 26);
 			contentPane.add(cbUsers);
 			
 		
