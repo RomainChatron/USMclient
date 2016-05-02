@@ -61,15 +61,18 @@ public class GroupChat extends JFrame {
 		setBounds(100, 100, 979, 722);
 		
 		try {
-			_Chat c =  ((_ObjectBuilder) rmi.get("ObjectBuilder")).createChat();
-			c.setName("Chat du groupe "+group.getName());
-			c.setParticipants(group.getListMember());
-			c.setParticipants(group.getListAdmin());
 			
-			JPanel jp = new JPanel();
-			jp.add(c.displayChat());
-			add(jp);
-			jp.setVisible(true);
+			contentPane = new JPanel();
+			contentPane.setBackground(new Color(0, 102, 204));
+			contentPane.setForeground(new Color(0, 102, 204));
+			contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+			setContentPane(contentPane);
+			contentPane.setLayout(null);
+			
+			group.associateChat();
+			group.getChat().setName("Chat du groupe "+group.getName());
+			
+			group.getChat().displayChat(contentPane);
 			
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
