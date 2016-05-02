@@ -1,13 +1,9 @@
 package appTemoin1;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import vInterface._ObjectBuilder;
 import vInterface._User;
 import vInterfaceDB._UserDB;
 
@@ -20,8 +16,6 @@ import javax.swing.JComboBox;
 import java.awt.Font;
 import javax.swing.JButton;
 
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
@@ -30,6 +24,7 @@ import java.util.HashMap;
 
 public class DeleteUser extends JFrame {
 
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	/**
@@ -81,7 +76,6 @@ public class DeleteUser extends JFrame {
 			for (int i=1; i<u.size()+1;i++){
 				allUsers[i] = u.get(i-1).getUserName()+" : "+u.get(i-1).getFirstName()+" "+u.get(i-1).getLastName();
 			}
-			
 			
 			JComboBox cbUsers = new JComboBox(allUsers);
 			cbUsers.setBounds(61, 118, 281, 26);
