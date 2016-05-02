@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
@@ -28,7 +29,7 @@ public class MainMenuAdmin extends JFrame {
 
 	/**
 	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -44,11 +45,11 @@ public class MainMenuAdmin extends JFrame {
 			}
 		});
 	}
-
+ */
 	/**
 	 * Create the frame.
 	 */
-	public MainMenuAdmin() {
+	public MainMenuAdmin(HashMap<String, Object> rmi) {
 		setTitle("Ultimate Society Messenger");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(MainMenuAdmin.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -175,7 +176,7 @@ public class MainMenuAdmin extends JFrame {
 		btAddUser.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				createUser cu = new createUser();
+				createUser cu = new createUser(rmi);
 				cu.setLocationRelativeTo(null);
 				cu.setResizable(false);
 				cu.setVisible(true);
