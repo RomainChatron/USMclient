@@ -50,7 +50,7 @@ public class Vue_Groupe extends JFrame {
 		try {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Vue_Groupe.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 		setTitle("Ultimate Society Messenger");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 935, 770);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 102, 204));
@@ -137,12 +137,7 @@ public class Vue_Groupe extends JFrame {
 		btRetour.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//TODO
-				/*UserMainPage ump = new UserMainPage();
-				ump.setLocationRelativeTo(null);
-				ump.setResizable(false);
-				ump.setVisible(true);*/
-				contentPane.setVisible(false);
+				dispose();
 			}
 		});
 		btRetour.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));

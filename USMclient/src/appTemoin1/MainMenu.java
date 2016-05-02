@@ -50,7 +50,7 @@ public class MainMenu extends JFrame {
 	public MainMenu() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(MainMenu.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 		setTitle("Ultimate Society Messenger");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 579, 384);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 102, 204));
@@ -95,12 +95,7 @@ public class MainMenu extends JFrame {
 		btnRetour.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO
-				/*UserMainPage ump = new UserMainPage(); 
-				ump.setLocationRelativeTo(null);
-				ump.setResizable(false);
-				ump.setVisible(true);*/
-				contentPane.setVisible(false);
+				dispose();
 			}
 		});
 		btnRetour.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
