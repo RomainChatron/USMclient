@@ -69,12 +69,15 @@ public class Vue_Groupe extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		
-		
+		String membres = "\r\n";
+		for(int i = 0 ; i < group.getListMember().size() ; i++) {
+			membres += "- " + group.getListMember().get(i).getUserName() + "\r\n";
+		}
 		
 		/* TextArea des users du groupe */
 		JTextArea txtrDakaya = new JTextArea();
 		txtrDakaya.setBackground(SystemColor.inactiveCaption);
-		txtrDakaya.setText("\r\n  - Dakaya\r\n  - ProOF\r\n  - Laziness\r\n  - Sheitan");
+		txtrDakaya.setText(membres); // TODO : ici
 		txtrDakaya.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		txtrDakaya.setBounds(15, 201, 202, 240);
 		txtrDakaya.setEditable(false);
@@ -126,6 +129,7 @@ public class Vue_Groupe extends JFrame {
 		textArea_2.setBounds(706, 201, 192, 240);
 		contentPane.add(textArea_2);
 		
+		/* Bouton quitter groupe */
 		JButton btnQuitterGroupe = new JButton("Quitter groupe");
 		btnQuitterGroupe.setBackground(Color.BLACK);
 		btnQuitterGroupe.setForeground(Color.WHITE);
@@ -153,6 +157,7 @@ public class Vue_Groupe extends JFrame {
 		lblNewLabel_4.setBounds(726, 570, 145, 128);
 		contentPane.add(lblNewLabel_4);
 		
+		/* Bouton du chat */
 		JButton btnChatDuGroupe = new JButton("Chat du groupe");
 		btnChatDuGroupe.setBackground(Color.BLACK);
 		btnChatDuGroupe.setForeground(Color.WHITE);
@@ -164,7 +169,6 @@ public class Vue_Groupe extends JFrame {
 				gC.setResizable(false);
 				gC.setVisible(true);
 				contentPane.setVisible(false);
-				
 			}
 		});
 		btnChatDuGroupe.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));

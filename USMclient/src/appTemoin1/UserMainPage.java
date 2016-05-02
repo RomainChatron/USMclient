@@ -138,8 +138,7 @@ public class UserMainPage extends JFrame {
 		String[] jCBgrp ;
 		for(int i = 0 ; i < idGs.size(); i++) {
 			listGrp.add(((_GroupDB)rmi.get("GroupDB")).getGroup(idGs.get(i)));
-			groups += "- " + listGrp.get(i).getName();
-			groups += "\r\n";
+			groups += "- " + listGrp.get(i).getName() + "\r\n";
 		}
 		jCBgrp = new String[listGrp.size()+1];
 		jCBgrp[0] = "Choisir un groupe";
@@ -184,10 +183,10 @@ public class UserMainPage extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				UpdateUser uu = new UpdateUser();
+				/*UpdateUser uu = new UpdateUser(rmi, moi);
 				uu.setLocationRelativeTo(null);
 				uu.setResizable(false);
-				uu.setVisible(true);
+				uu.setVisible(true);*/
 			}
 		});
 		btnNewButton_1.setHorizontalAlignment(SwingConstants.LEFT);
