@@ -10,6 +10,8 @@ import java.util.HashMap;
 
 import appTémoin.app1;
 import vInterface.*;
+import vInterfaceDB._UserDB;
+import vInterfaceDB._UserGroupDB;
 
 public class Client {
 
@@ -23,17 +25,24 @@ public class Client {
 			int PORT = 54321;
 			String urlObjectBuilder = "rmi://"+IPSERVER+":"+PORT+"/ObjectBuilder";
 			String urlUserDB = "rmi://"+IPSERVER+":"+PORT+"/UserDB";
+			String urlUserGroupDB = "rmi://"+IPSERVER+":"+PORT+"/UserGroupDB";
 			
 			_ObjectBuilder ob = (_ObjectBuilder)Naming.lookup(urlObjectBuilder);
-			_UserDB userdb = (_UserDB)Naming.lookup(urlUserDB);
+			_UserDB userDB = (_UserDB)Naming.lookup(urlUserDB);
+			_UserGroupDB userGroupDB = (_UserGroupDB)Naming.lookup(urlUserGroupDB);
 			
 			rmi.put("ObjectBuilder", ob);
-			rmi.put("UserDB", userdb);
+			rmi.put("UserDB", userDB);
+			rmi.put("UserGroupDB", userGroupDB);
 			
-			//test
+			 
 			app1 JFCon = new app1(rmi);
 			JFCon.frmUltimateSocietyMessenger.setVisible(true);			
 			
+			
+			/* Test Perso */
+			//Connexion JFCon = new Connexion(rmi);
+			//JFCon.setVisible(true);
 			
 		}catch (MalformedURLException e) {
 			e.printStackTrace();

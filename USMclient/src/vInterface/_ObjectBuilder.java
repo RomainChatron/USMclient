@@ -3,6 +3,8 @@ package vInterface;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
+import vInterfaceDB._UserDB;
+
 public interface _ObjectBuilder extends Remote {
 
 	public _User createUser() throws RemoteException ;

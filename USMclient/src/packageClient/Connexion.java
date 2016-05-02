@@ -10,7 +10,7 @@ import javax.swing.border.EmptyBorder;
 
 import vInterface._ObjectBuilder;
 import vInterface._User;
-import vInterface._UserDB;
+import vInterfaceDB._UserDB;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -53,16 +53,6 @@ public class Connexion extends JFrame {
 	 */
 	public Connexion(HashMap<String, Object> rmi) { //ArrayList<Object> liste
 		this.rmi = rmi;
-		_UserDB userDB ;
-		
-		String IPSERVER = "localhost";
-		int PORT = 54321;
-		String urlUserDB = "rmi://"+IPSERVER+":"+PORT+"/UserDB";
-		try {
-			userDB = (_UserDB)Naming.lookup(urlUserDB);
-		
-		
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -74,10 +64,18 @@ public class Connexion extends JFrame {
 		btnConnexion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					if (userDB.connect(tfUsername.getText(), tfPassword.getText())) {
-						_User moi = ((_ObjectBuilder) rmi.get("ObjectBuilder")).createUser();
-						JOptionPane.showMessageDialog(contentPane, moi.test());
-						Accueil acc = new Accueil();
+					if (((_UserDB) rmi.get("UserDB")).connect(tfUsername.getText(), tfPassword.getText())) {
+						//_User moi = ((_ObjectBuilder) rmi.get("ObjectBuilder")).createUser();
+						_User moi = ((_UserDB)rmi.get("UserDB")).getUsers(tfUsername.getText());
+						/*HashMap<String, String> paramUser = ((_UserDB)rmi.get("UserDB")).getUsers(tfUsername.getText());
+						moi.setUserName(tfUsername.getText());
+						moi.setFirstName(paramUser.get("firstName"));
+						moi.setLastName(paramUser.get("lastName"));
+						moi.setEmail(paramUser.get("email"));
+						moi.setJob(paramUser.get("job"));
+						*/
+						//System.out.println(paramUser.get("job"));
+						Accueil acc = new Accueil(rmi, moi);
 						acc.setVisible(true);
 						
 					} else {
@@ -110,9 +108,5 @@ public class Connexion extends JFrame {
 		tfPassword.setBounds(139, 116, 86, 20);
 		contentPane.add(tfPassword);
 		tfPassword.setColumns(10);
-		} catch (MalformedURLException | RemoteException | NotBoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }
