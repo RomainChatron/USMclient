@@ -33,6 +33,8 @@ import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 import javax.swing.JTextPane;
 import java.awt.SystemColor;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class UserMainPage extends JFrame {
 
@@ -147,7 +149,6 @@ public class UserMainPage extends JFrame {
 				C1.setLocationRelativeTo(null);
 				C1.setResizable(false);
 				C1.setVisible(true);
-				contentPane.setVisible(false);
 			}
 		});
 		btnNewButton.setHorizontalAlignment(SwingConstants.LEFT);
@@ -159,6 +160,10 @@ public class UserMainPage extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Profil");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -166,7 +171,6 @@ public class UserMainPage extends JFrame {
 				uu.setLocationRelativeTo(null);
 				uu.setResizable(false);
 				uu.setVisible(true);
-				contentPane.setVisible(false);
 			}
 		});
 		btnNewButton_1.setHorizontalAlignment(SwingConstants.LEFT);
@@ -197,7 +201,6 @@ public class UserMainPage extends JFrame {
 				vG.setLocationRelativeTo(null);
 				vG.setResizable(false);
 				vG.setVisible(true);
-				contentPane.setVisible(false);
 			}
 		});
 		cbGroup.setBounds(15, 397, 177, 26);
