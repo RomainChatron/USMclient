@@ -5,6 +5,9 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 
 public interface _Chat extends Remote {
 	
@@ -24,14 +27,13 @@ public interface _Chat extends Remote {
 		 */
 		public void addMessage(String msg) throws RemoteException ;
 
-		public Container displayChat() throws RemoteException;
-		
+		public void displayChat(JFrame contentPane) throws RemoteException;
 		/**
 		 * Get the String for a chat 
 		 * Help to validate the code
-		 */
+		 
 		public String toString() ;
-		
+		*/
 		// GETTERS AND SETTERS
 
 			public String getName() throws RemoteException ;

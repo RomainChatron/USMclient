@@ -33,7 +33,8 @@ import java.awt.SystemColor;
 
 public class GroupChat extends JFrame {
 
-	private JPanel contentPane;
+	private static final long serialVersionUID = 1L;
+	private JFrame contentPane;
 
 	/**
 	 * Launch the application.
@@ -61,13 +62,19 @@ public class GroupChat extends JFrame {
 		setBounds(100, 100, 979, 722);
 		
 		try {
-			_Chat c =  ((_ObjectBuilder) rmi.get("ObjectBuilder")).createChat();
-			c.setName("Chat du groupe "+group.getName());
-			c.setParticipants(group.getListMember());
-			c.setParticipants(group.getListAdmin());
 			
+			contentPane = new JFrame();
+			contentPane.setBackground(new Color(0, 102, 204));
+			contentPane.setForeground(new Color(0, 102, 204));
+
+			contentPane.setVisible(true);
 			
-			setContentPane(c.displayChat());
+			group.associateChat();
+			group.getChat().setName("Chat du groupe "+group.getName());
+			
+			group.getChat().displayChat(contentPane);
+			contentPane.setVisible(true);
+			
 			
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
