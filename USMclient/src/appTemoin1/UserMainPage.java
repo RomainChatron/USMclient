@@ -82,12 +82,13 @@ public class UserMainPage extends JFrame {
 		lblBonjour.setBounds(60, 16, 297, 59);
 		contentPane.add(lblBonjour);
 		
-		/* */
+		/* EditorPane des taches */
 		JEditorPane dtrpnFaireLe = new JEditorPane();
 		dtrpnFaireLe.setBackground(SystemColor.inactiveCaption);
 		dtrpnFaireLe.setText("\r\n  - Faire le caf\u00E9\r\n  - Faire un csGo\r\n  - Mettre des hs\r\n  - buy awp next round");
 		dtrpnFaireLe.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		dtrpnFaireLe.setBounds(654, 149, 208, 229);
+		dtrpnFaireLe.setEditable(false);
 		contentPane.add(dtrpnFaireLe);
 		
 		/* Label mes groupes */
@@ -144,12 +145,13 @@ public class UserMainPage extends JFrame {
 			jCBgrp[i] = listGrp.get(i-1).getName();
 		}
 		
-		/* */
+		/* TextArea des groupes */
 		JTextArea txtrDeveloppementC = new JTextArea();
 		txtrDeveloppementC.setBackground(SystemColor.inactiveCaption);
 		txtrDeveloppementC.setText(groups);
 		txtrDeveloppementC.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		txtrDeveloppementC.setBounds(15, 155, 177, 229);
+		txtrDeveloppementC.setEditable(false);
 		contentPane.add(txtrDeveloppementC);
 		
 		/* Bouton Parametre */
@@ -192,6 +194,7 @@ public class UserMainPage extends JFrame {
 		btnNewButton_1.setBounds(654, 477, 208, 48);
 		contentPane.add(btnNewButton_1);
 		
+		/* */
 		JLabel lblNewLabel_3 = new JLabel("New label");
 		lblNewLabel_3.setIcon(new ImageIcon(UserMainPage.class.getResource("/appTemoin1/images/barre.jpg")));
 		lblNewLabel_3.setBounds(-23, 127, 921, 5);
@@ -225,8 +228,8 @@ public class UserMainPage extends JFrame {
 		btnDeconnexion.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//Connexion window = new Connexion(); // TODO
-				contentPane.setVisible(false);
+				Connexion window = new Connexion(rmi);
+				dispose();
 			}
 		});
 		btnDeconnexion.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
