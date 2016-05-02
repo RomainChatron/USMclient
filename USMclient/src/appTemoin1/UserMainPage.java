@@ -183,10 +183,10 @@ public class UserMainPage extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				/*UpdateUser uu = new UpdateUser(rmi, moi);
+				UpdateUser uu = new UpdateUser(rmi, moi);
 				uu.setLocationRelativeTo(null);
 				uu.setResizable(false);
-				uu.setVisible(true);*/
+				uu.setVisible(true);
 			}
 		});
 		btnNewButton_1.setHorizontalAlignment(SwingConstants.LEFT);
@@ -216,10 +216,12 @@ public class UserMainPage extends JFrame {
 		JComboBox cbGroup = new JComboBox(jCBgrp);
 		cbGroup.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				Vue_Groupe vG = new Vue_Groupe(rmi, listGrp.get(cbGroup.getSelectedIndex()-1));
-				vG.setLocationRelativeTo(null);
-				vG.setResizable(false);
-				vG.setVisible(true);
+				if(e.getStateChange() == ItemEvent.SELECTED) {
+					Vue_Groupe vG = new Vue_Groupe(rmi, listGrp.get(cbGroup.getSelectedIndex()-1));
+					vG.setLocationRelativeTo(null);
+					vG.setResizable(false);
+					vG.setVisible(true);
+				}
 			}
 		});
 		cbGroup.setBounds(15, 397, 177, 26);
