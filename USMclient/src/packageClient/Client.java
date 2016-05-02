@@ -9,6 +9,7 @@ import java.util.HashMap;
 import appTemoin1.Connexion;
 import vInterface.*;
 import vInterfaceDB._GroupDB;
+import vInterfaceDB._TaskDB;
 import vInterfaceDB._UserDB;
 import vInterfaceDB._UserGroupDB;
 
@@ -26,16 +27,19 @@ public class Client {
 			String urlUserDB = "rmi://"+IPSERVER+":"+PORT+"/UserDB";
 			String urlUserGroupDB = "rmi://"+IPSERVER+":"+PORT+"/UserGroupDB";
 			String urlGroupDB = "rmi://"+IPSERVER+":"+PORT+"/GroupDB";
+			String urlTaskDB = "rmi://"+IPSERVER+":"+PORT+"/TaskDB";
 			
 			_ObjectBuilder ob = (_ObjectBuilder)Naming.lookup(urlObjectBuilder);
 			_UserDB userDB = (_UserDB)Naming.lookup(urlUserDB);
 			_UserGroupDB userGroupDB = (_UserGroupDB)Naming.lookup(urlUserGroupDB);
 			_GroupDB GroupDB = (_GroupDB)Naming.lookup(urlGroupDB);
+			_TaskDB TaskDB = (_TaskDB)Naming.lookup(urlTaskDB);
 			
 			rmi.put("ObjectBuilder", ob);
 			rmi.put("UserDB", userDB);
 			rmi.put("UserGroupDB", userGroupDB);
 			rmi.put("GroupDB", GroupDB);
+			rmi.put("TaskDB", TaskDB);
 			
 			 
 			Connexion JFCon = new Connexion(rmi);
