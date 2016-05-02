@@ -136,9 +136,10 @@ public class createUser extends JFrame {
 				
 				String userName = u.userName(firstName, lastName);
 				String passWord = u.password();
-				JOptionPane.showMessageDialog(null, "L'utilisateur a bien été créé !");
-				
+			
 				((_UserDB) rmi.get("UserDB")).addUser(userName, passWord, firstName, lastName, email);
+				
+				JOptionPane.showMessageDialog(null, "L'utilisateur a bien \u00E9t\u00E9 cr\u00E9\u00E9 !");
 				
 				} catch (RemoteException e1) {
 					// TODO Auto-generated catch block
