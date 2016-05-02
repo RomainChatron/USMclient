@@ -222,8 +222,8 @@ public class MainMenuAdmin extends JFrame {
 		btnDeconnexion.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				//Connexion window = new Connexion(); // TODO
-				contentPane.setVisible(false);
+				Connexion window = new Connexion(rmi);
+				dispose();
 			}
 		});
 		btnDeconnexion.setBackground(Color.BLACK);

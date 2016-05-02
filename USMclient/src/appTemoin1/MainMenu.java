@@ -82,6 +82,10 @@ public class MainMenu extends JFrame {
 		btnCrerUnGroupe.setHorizontalAlignment(SwingConstants.LEFT);
 		btnCrerUnGroupe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				CreerGroupe cg = new CreerGroupe(rmi);
+				cg.setLocationRelativeTo(null);
+				cg.setResizable(false);
+				cg.setVisible(true);
 			}
 		});
 		btnCrerUnGroupe.setIcon(new ImageIcon(MainMenu.class.getResource("/appTemoin1/images/OMGFDP.png")));
@@ -105,6 +109,15 @@ public class MainMenu extends JFrame {
 		contentPane.add(btnRetour);
 		
 		JButton btnGrerSesTches = new JButton("G\u00E9rer ses t\u00E2ches");
+		btnGrerSesTches.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				Task t = new Task();
+				t.setLocationRelativeTo(null);
+				t.setResizable(false);
+				t.setVisible(true);
+			}
+		});
 		btnGrerSesTches.setIcon(new ImageIcon(MainMenu.class.getResource("/appTemoin1/images/005.png")));
 		btnGrerSesTches.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		btnGrerSesTches.setBackground(Color.BLACK);
