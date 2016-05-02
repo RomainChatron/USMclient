@@ -48,7 +48,7 @@ public class GroupChat extends JFrame {
 	public GroupChat() {
 		setTitle("Ultimate Society Messenger");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(GroupChat.class.getResource("/appTemoin1/images/fleches-echange.gif")));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 979, 722);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 102, 204));
@@ -100,12 +100,7 @@ public class GroupChat extends JFrame {
 		btnRetour.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//TODO
-				/*Vue_Groupe vG = new Vue_Groupe();
-				vG.setLocationRelativeTo(null);
-				vG.setResizable(false);
-				vG.setVisible(true);*/
-				contentPane.setVisible(false);
+				dispose();
 			}
 		});
 		btnRetour.setBackground(Color.BLACK);
