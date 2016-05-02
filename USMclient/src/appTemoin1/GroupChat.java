@@ -100,10 +100,11 @@ public class GroupChat extends JFrame {
 		btnRetour.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Vue_Groupe vG = new Vue_Groupe();
+				//TODO
+				/*Vue_Groupe vG = new Vue_Groupe();
 				vG.setLocationRelativeTo(null);
 				vG.setResizable(false);
-				vG.setVisible(true);
+				vG.setVisible(true);*/
 				contentPane.setVisible(false);
 			}
 		});

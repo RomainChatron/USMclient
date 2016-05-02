@@ -7,27 +7,31 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-
-
+import vInterface._User;
 
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.awt.Toolkit;
 //import com.jgoodies.forms.factories.DefaultComponentFactory;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.Font;
+import java.awt.HeadlessException;
+
+import vInterfaceDB.*;
 
 public class Connexion {
 
 	private JFrame frmUltimateSocietyMessenger;
 	private JTextField txtUser;
 	private JPasswordField txtPw;
+	HashMap<String, Object> rmi = new HashMap<String, Object>() ;
 	//public String userName;
 
 	/**
@@ -37,7 +41,7 @@ public class Connexion {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Connexion window = new Connexion();
+					Connexion window = new Connexion(new HashMap<String, Object>());
 					window.frmUltimateSocietyMessenger.setVisible(true);
 
 				} catch (Exception e) {
@@ -51,7 +55,8 @@ public class Connexion {
 	/**
 	 * Create the application.
 	 */
-	public Connexion() {
+	public Connexion(HashMap<String, Object> rmi) {
+		this.rmi = rmi ;
 		initialize();
 	}
 
@@ -69,9 +74,7 @@ public class Connexion {
 		frmUltimateSocietyMessenger.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmUltimateSocietyMessenger.getContentPane().setLayout(null);
 		frmUltimateSocietyMessenger.setResizable(false);
-		frmUltimateSocietyMessenger.setVisible(true);
 
-		
 		JLabel lblUsername = new JLabel("Username");
 		lblUsername.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		lblUsername.setForeground(SystemColor.text);
@@ -101,24 +104,32 @@ public class Connexion {
 		btOk.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				char[] pw = txtPw.getPassword();
-				String user = txtUser.getText();
-				if (true){//UserDB.connect(user, String.valueOf(pw))) {
-					if (user.equalsIgnoreCase("Admin")) {
-						MainMenuAdmin mma = new MainMenuAdmin();
-						mma.setLocationRelativeTo(null);
-						mma.setResizable(false);
-						mma.setVisible(true);
-						frmUltimateSocietyMessenger.dispose();
+				/*char[] pw = txtPw.getPassword();
+				String user = txtUser.getText();*/
+				String pw = "coucou";
+				String user = "Dakaya";
+				_User moi ;
+				try {
+					if (((_UserDB)rmi.get("UserDB")).connect(user, new String(pw))){
+						if (user.equalsIgnoreCase("Admin")) {
+							MainMenuAdmin mma = new MainMenuAdmin();
+							mma.setLocationRelativeTo(null);
+							mma.setResizable(false);
+							mma.setVisible(true);
+							frmUltimateSocietyMessenger.dispose();
+						} else {
+							moi = ((_UserDB)rmi.get("UserDB")).getUsers(user);
+							UserMainPage ump = new UserMainPage(rmi, moi);
+							ump.setLocationRelativeTo(null);
+							ump.setResizable(false);
+							ump.setVisible(true);
+							frmUltimateSocietyMessenger.dispose();
+						}
 					} else {
-						UserMainPage ump = new UserMainPage();
-						ump.setLocationRelativeTo(null);
-						ump.setResizable(false);
-						ump.setVisible(true);
-						frmUltimateSocietyMessenger.dispose();
+						JOptionPane.showMessageDialog(null, "Erreur d'authentification réessayer !");
 					}
-				} else {
-					JOptionPane.showMessageDialog(null, "Erreur d'authentification réessayer !");
+				} catch (HeadlessException | RemoteException e) {
+					e.printStackTrace();
 				}
 			}
 		});
@@ -168,5 +179,6 @@ public class Connexion {
 		lblNewLabel_1.setIcon(new ImageIcon(Connexion.class.getResource("/appTemoin1/images/barre.jpg")));
 		lblNewLabel_1.setBounds(-15, 259, 621, 6);
 		frmUltimateSocietyMessenger.getContentPane().add(lblNewLabel_1);
+		frmUltimateSocietyMessenger.setVisible(true);
 	}
 }
