@@ -1,6 +1,6 @@
 package packageClient;
 
-import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 import java.awt.HeadlessException;
 
@@ -8,7 +8,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import vInterface._ObjectBuilder;
 import vInterface._User;
 import vInterfaceDB._UserDB;
 
@@ -17,11 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
-import java.net.MalformedURLException;
-import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.awt.event.ActionEvent;
 

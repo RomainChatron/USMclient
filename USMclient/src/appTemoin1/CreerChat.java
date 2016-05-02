@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
 import java.awt.Toolkit;
 import java.awt.Color;
 import javax.swing.ImageIcon;
@@ -25,7 +26,7 @@ public class CreerChat extends JFrame {
 
 	/**
 	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -39,12 +40,12 @@ public class CreerChat extends JFrame {
 				}
 			}
 		});
-	}
+	} */
 
 	/**
 	 * Create the frame.
 	 */
-	public CreerChat() {
+	public CreerChat(HashMap<String, Object> rmi) {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(CreerChat.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 		setTitle("Ultimate Society Messenger");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -100,7 +101,7 @@ public class CreerChat extends JFrame {
 		btnMenu.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				MainMenuAdmin C1 = new MainMenuAdmin();
+				MainMenuAdmin C1 = new MainMenuAdmin(rmi);
 				C1.setLocationRelativeTo(null);
 				C1.setResizable(false);
 				C1.setVisible(true);
