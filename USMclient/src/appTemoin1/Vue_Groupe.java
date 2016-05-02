@@ -168,7 +168,6 @@ public class Vue_Groupe extends JFrame {
 				gC.setLocationRelativeTo(null);
 				gC.setResizable(false);
 				gC.setVisible(true);
-				contentPane.setVisible(false);
 			}
 		});
 		btnChatDuGroupe.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));

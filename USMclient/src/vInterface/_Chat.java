@@ -1,5 +1,6 @@
 package vInterface;
 
+import java.awt.Container;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public interface _Chat extends Remote {
 		 */
 		public void addMessage(String msg) throws RemoteException ;
 
-		public void displayChat() throws RemoteException;
+		public Container displayChat() throws RemoteException;
 		
 		/**
 		 * Get the String for a chat 
