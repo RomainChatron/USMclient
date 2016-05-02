@@ -50,7 +50,7 @@ public class Vue_Groupe extends JFrame {
 		try {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Vue_Groupe.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 		setTitle("Ultimate Society Messenger");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 935, 770);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 102, 204));
@@ -59,10 +59,8 @@ public class Vue_Groupe extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel;
-		
-			lblNewLabel = new JLabel("Bienvenue sur le groupe " + group.getName());
-		
+		/* Label bienvenue */
+		JLabel lblNewLabel = new JLabel("Bienvenue sur le groupe " + group.getName());
 		lblNewLabel.setBackground(Color.WHITE);
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Snap ITC", Font.BOLD, 24));
@@ -70,13 +68,19 @@ public class Vue_Groupe extends JFrame {
 		lblNewLabel.setBounds(15, 16, 488, 54);
 		contentPane.add(lblNewLabel);
 		
+		
+		
+		
+		/* TextArea des users du groupe */
 		JTextArea txtrDakaya = new JTextArea();
 		txtrDakaya.setBackground(SystemColor.inactiveCaption);
 		txtrDakaya.setText("\r\n  - Dakaya\r\n  - ProOF\r\n  - Laziness\r\n  - Sheitan");
 		txtrDakaya.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		txtrDakaya.setBounds(15, 201, 202, 240);
+		txtrDakaya.setEditable(false);
 		contentPane.add(txtrDakaya);
 		
+		/* Label liste des membres */
 		JLabel lblNewLabel_1 = new JLabel("Liste des membres");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNewLabel_1.setForeground(Color.WHITE);
@@ -100,7 +104,7 @@ public class Vue_Groupe extends JFrame {
 		lblNewLabel_3.setBounds(715, 137, 171, 48);
 		contentPane.add(lblNewLabel_3);
 		
-		JLabel lblDescriptionGroupe = new JLabel("La Description ici : Groupe compos\u00E9 de d\u00E9veloppeurs java...\r\n");
+		JLabel lblDescriptionGroupe = new JLabel(group.getDescription() + "\r\n");
 		lblDescriptionGroupe.setForeground(Color.WHITE);
 		lblDescriptionGroupe.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		lblDescriptionGroupe.setBounds(196, 86, 445, 29);
@@ -179,7 +183,6 @@ public class Vue_Groupe extends JFrame {
 		txtrLeDeuxime.setBounds(245, 634, 441, 80);
 		contentPane.add(txtrLeDeuxime);
 		} catch (RemoteException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 	}

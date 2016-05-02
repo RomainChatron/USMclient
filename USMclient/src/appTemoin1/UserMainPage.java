@@ -67,7 +67,7 @@ public class UserMainPage extends JFrame {
 		try {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(UserMainPage.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 		setTitle("Ultimate Society Messenger");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 898, 776);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 102, 204));
@@ -75,12 +75,14 @@ public class UserMainPage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		/* Label Bonjour */
 		JLabel lblBonjour = new JLabel("Bonjour, " + moi.getFirstName() +" !");
 		lblBonjour.setFont(new Font("Snap ITC", Font.BOLD, 24));
 		lblBonjour.setForeground(Color.WHITE);
 		lblBonjour.setBounds(60, 16, 297, 59);
 		contentPane.add(lblBonjour);
 		
+		/* */
 		JEditorPane dtrpnFaireLe = new JEditorPane();
 		dtrpnFaireLe.setBackground(SystemColor.inactiveCaption);
 		dtrpnFaireLe.setText("\r\n  - Faire le caf\u00E9\r\n  - Faire un csGo\r\n  - Mettre des hs\r\n  - buy awp next round");
@@ -88,6 +90,7 @@ public class UserMainPage extends JFrame {
 		dtrpnFaireLe.setBounds(654, 149, 208, 229);
 		contentPane.add(dtrpnFaireLe);
 		
+		/* Label mes groupes */
 		JLabel lblNewLabel = new JLabel("Mes groupes");
 		lblNewLabel.setBackground(Color.BLACK);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
@@ -97,12 +100,14 @@ public class UserMainPage extends JFrame {
 		lblNewLabel.setBounds(15, 91, 152, 48);
 		contentPane.add(lblNewLabel);
 		
+		/* JTextArea des articles */
 		JTextArea txtArticle1 = new JTextArea();
 		txtArticle1.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		txtArticle1.setText("Vos articles ici...");
 		txtArticle1.setBounds(207, 149, 432, 327);
 		contentPane.add(txtArticle1);
 		
+		/* Label mes taches */
 		JLabel lblNewLabel_2 = new JLabel("Mes t\u00E2ches");
 		lblNewLabel_2.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		lblNewLabel_2.setForeground(Color.WHITE);
@@ -110,6 +115,7 @@ public class UserMainPage extends JFrame {
 		lblNewLabel_2.setBounds(654, 91, 152, 48);
 		contentPane.add(lblNewLabel_2);
 		
+		/* Label mon journal */
 		JLabel lblNewLabel_1 = new JLabel("Mon journal");
 		lblNewLabel_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		lblNewLabel_1.setForeground(Color.WHITE);
@@ -117,6 +123,12 @@ public class UserMainPage extends JFrame {
 		lblNewLabel_1.setBounds(291, 87, 189, 57);
 		contentPane.add(lblNewLabel_1);
 		
+		/*
+		 * Création de l'arrayList des ID des groupes de l'user
+		 * Création de l'arrayList des groupes de l'user
+		 * Création de la string des groupes
+		 * Création du tableau de String du combo box groupe
+		 */
 		ArrayList<Integer> idGs = ((_UserGroupDB)rmi.get("UserGroupDB")).getGroups(moi.getUserName());
 		ArrayList<_Group> listGrp = new ArrayList<_Group>();
 		String groups = "\r\n";
@@ -132,6 +144,7 @@ public class UserMainPage extends JFrame {
 			jCBgrp[i] = listGrp.get(i-1).getName();
 		}
 		
+		/* */
 		JTextArea txtrDeveloppementC = new JTextArea();
 		txtrDeveloppementC.setBackground(SystemColor.inactiveCaption);
 		txtrDeveloppementC.setText(groups);
@@ -139,6 +152,7 @@ public class UserMainPage extends JFrame {
 		txtrDeveloppementC.setBounds(15, 155, 177, 229);
 		contentPane.add(txtrDeveloppementC);
 		
+		/* Bouton Parametre */
 		JButton btnNewButton = new JButton("Param\u00E8tres");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -158,6 +172,7 @@ public class UserMainPage extends JFrame {
 		btnNewButton.setBounds(654, 413, 208, 48);
 		contentPane.add(btnNewButton);
 		
+		/* Bouton profil */
 		JButton btnNewButton_1 = new JButton("Profil");
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
@@ -182,6 +197,7 @@ public class UserMainPage extends JFrame {
 		lblNewLabel_3.setBounds(-23, 127, 921, 5);
 		contentPane.add(lblNewLabel_3);
 		
+		/* Bouton mes chats */
 		JButton btnNewButton_2 = new JButton("Mes chats");
 		btnNewButton_2.setForeground(Color.WHITE);
 		btnNewButton_2.setBackground(Color.BLACK);
@@ -190,6 +206,7 @@ public class UserMainPage extends JFrame {
 		btnNewButton_2.setBounds(15, 439, 164, 51);
 		contentPane.add(btnNewButton_2);
 		
+		/* Combobox des groupes */
 		JComboBox cbGroup = new JComboBox(jCBgrp);
 		cbGroup.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -203,6 +220,7 @@ public class UserMainPage extends JFrame {
 		cbGroup.setBounds(15, 397, 177, 26);
 		contentPane.add(cbGroup);
 		
+		/* Bouton deconnexion */
 		JButton btnDeconnexion = new JButton("Deconnexion");
 		btnDeconnexion.addMouseListener(new MouseAdapter() {
 			@Override
@@ -217,6 +235,7 @@ public class UserMainPage extends JFrame {
 		btnDeconnexion.setBounds(654, 572, 134, 29);
 		contentPane.add(btnDeconnexion);
 		
+		/* */
 		JTextPane txtpnArticle = new JTextPane();
 		txtpnArticle.setText(" Article 2...");
 		txtpnArticle.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
@@ -233,7 +252,6 @@ public class UserMainPage extends JFrame {
 			    }
 	}*/
 		} catch (RemoteException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 }

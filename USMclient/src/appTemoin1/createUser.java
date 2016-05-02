@@ -141,7 +141,6 @@ public class createUser extends JFrame {
 				((_UserDB) rmi.get("UserDB")).addUser(userName, passWord, firstName, lastName, email);
 				
 				} catch (RemoteException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				

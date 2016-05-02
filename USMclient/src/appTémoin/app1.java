@@ -126,7 +126,6 @@ public class app1 {
 						JOptionPane.showMessageDialog(null, "Erreur d'authentification réessayer !");
 					}
 				} catch (HeadlessException | RemoteException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

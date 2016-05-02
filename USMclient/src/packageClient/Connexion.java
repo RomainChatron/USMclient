@@ -77,7 +77,6 @@ public class Connexion extends JFrame {
 						JOptionPane.showMessageDialog(contentPane, "Erreur");
 					}
 				} catch (HeadlessException | RemoteException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

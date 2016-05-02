@@ -75,7 +75,6 @@ public class Accueil extends JFrame {
 			lblEmail.setBounds(274, 53, 46, 14);
 			contentPane.add(lblEmail);
 		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

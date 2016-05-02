@@ -90,7 +90,6 @@ public class MyTable extends JFrame {
 				jButton[j].addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						// TODO Auto-generated method stub
 						
 						//JFrame
 						JFrame jf = new JFrame();
@@ -160,7 +159,6 @@ public class MyTable extends JFrame {
 							
 							@Override
 							public void actionPerformed(ActionEvent e) {
-								// TODO Auto-generated method stub
 								
 								//Get Selected row
 								for(int i = 0; i < tableST.getRowCount(); i++){
@@ -197,7 +195,6 @@ public class MyTable extends JFrame {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					// TODO Auto-generated method stub
 					
 					//Get Selected row
 					for(int i = 0; i < table.getRowCount(); i++){
