@@ -166,7 +166,7 @@ public class UserMainPage extends JFrame {
 			btnNewButton.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
-					MainMenu C1 = new MainMenu();
+					MainMenu C1 = new MainMenu(rmi);
 					C1.setLocationRelativeTo(null);
 					C1.setResizable(false);
 					C1.setVisible(true);
@@ -219,7 +219,7 @@ public class UserMainPage extends JFrame {
 			contentPane.add(btnNewButton_2);
 			
 			/* Combobox des groupes */
-			JComboBox cbGroup = new JComboBox(jCBgrp);
+			JComboBox<String> cbGroup = new JComboBox<>(jCBgrp);
 			cbGroup.addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent e) {
 					if(e.getStateChange() == ItemEvent.SELECTED) {

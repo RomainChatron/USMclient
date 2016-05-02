@@ -1,19 +1,13 @@
 package appTemoin1;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import javax.swing.JSpinner;
-import javax.swing.JList;
-import java.awt.Choice;
-import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
@@ -22,14 +16,16 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+@SuppressWarnings("serial")
 public class MainMenu extends JFrame {
 
 	private JPanel contentPane;
+	HashMap<String, Object> rmi ;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -42,12 +38,13 @@ public class MainMenu extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
 	 */
-	public MainMenu() {
+	public MainMenu(HashMap<String, Object> rmi) {
+		this.rmi = rmi ;
 		setIconImage(Toolkit.getDefaultToolkit().getImage(MainMenu.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 		setTitle("Ultimate Society Messenger");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -82,6 +79,7 @@ public class MainMenu extends JFrame {
 		btnCrerUnGroupe.setHorizontalAlignment(SwingConstants.LEFT);
 		btnCrerUnGroupe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//TODO
 				CreerGroupe cg = new CreerGroupe(rmi);
 				cg.setLocationRelativeTo(null);
 				cg.setResizable(false);
