@@ -75,7 +75,7 @@ public class DeleteUser extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		try {
-			ArrayList<_User> u =  ((_UserDB) rmi.get("UserDB")).allUsers();
+			ArrayList<_User> u =  ((_UserDB) rmi.get("UserDB")).allUser();
 			String[] allUsers = new String[u.size()+1];
 			allUsers[0] = "Choisissez l'utilisateur..";
 			for (int i=1; i<u.size()+1;i++){
