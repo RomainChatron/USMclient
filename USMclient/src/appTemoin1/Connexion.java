@@ -104,10 +104,10 @@ public class Connexion {
 		btOk.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				/*char[] pw = txtPw.getPassword();
-				String user = txtUser.getText();*/
-				String pw = "coucou";
-				String user = "Dakaya";
+				char[] pw = txtPw.getPassword();
+				String user = txtUser.getText();
+				/*String pw = "coucou";
+				String user = "Dakaya";*/
 				_User moi ;
 				try {
 					if (((_UserDB)rmi.get("UserDB")).connect(user, new String(pw))){
