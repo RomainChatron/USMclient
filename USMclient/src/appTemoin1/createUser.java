@@ -134,8 +134,8 @@ public class createUser extends JFrame {
 				
 				_User u =  ((_ObjectBuilder) rmi.get("ObjectBuilder")).createUser();
 				
-				String userName = ((_User)rmi.get("User")).userName(firstName, lastName);
-				String passWord = ((_User)rmi.get("User")).password();
+				String userName = u.userName(firstName, lastName);
+				String passWord = u.password();
 				JOptionPane.showMessageDialog(null, "L'utilisateur a bien été créé !");
 				
 				((_UserDB) rmi.get("UserDB")).addUser(userName, passWord, firstName, lastName, email);
