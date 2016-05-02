@@ -33,7 +33,7 @@ public class createUser extends JFrame {
 	private JTextField textField_2;
 	private JTextField textField_3;
 	
-	HashMap<String, Object> rmi ;
+	
 
 	/**
 	 * Launch the application.
@@ -57,7 +57,7 @@ public class createUser extends JFrame {
 	 * Create the frame.
 	 */
 	public createUser(HashMap<String, Object> rmi) {
-		this.rmi = rmi; 
+		
 		
 		setBackground(new Color(0, 102, 204));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(createUser.class.getResource("/appTemoin1/images/fleches-echange.gif")));

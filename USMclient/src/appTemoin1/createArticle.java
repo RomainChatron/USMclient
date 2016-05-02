@@ -21,6 +21,7 @@ import javax.swing.JTextPane;
 import javax.swing.JComboBox;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 
@@ -31,7 +32,7 @@ public class createArticle extends JFrame {
 
 	/**
 	 * Launch the application.
-	 */
+	 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -44,11 +45,11 @@ public class createArticle extends JFrame {
 			}
 		});
 	}
-
+*/
 	/**
 	 * Create the frame.
 	 */
-	public createArticle() {
+	public createArticle(HashMap<String, Object> rmi) {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(createArticle.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 		setTitle("Ultimate Sociey Messenger");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -104,7 +105,7 @@ public class createArticle extends JFrame {
 		btnNewButton_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				MainMenuAdmin mma = new MainMenuAdmin();
+				MainMenuAdmin mma = new MainMenuAdmin(rmi);
 				mma.setLocationRelativeTo(null);
 				mma.setResizable(false);
 				mma.setVisible(true);
@@ -117,11 +118,11 @@ public class createArticle extends JFrame {
 		btnNewButton_2.setBounds(33, 648, 115, 29);
 		contentPane.add(btnNewButton_2);
 		
-		String[] exemplesGroup = { "Developpement C", "Kepp calm i'm global", "The 100 c'est pété", "Laziness"};
+		String[] exemplesGroup = { "Developpement C", "Kepp calm i'm global", "The 100 c'est pï¿½tï¿½", "Laziness"};
 		JComboBox cbGroup = new JComboBox(exemplesGroup);
 		cbGroup.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				// ici récuperer 
+				// ici rï¿½cuperer 
 				System.out.println("test : " + cbGroup.getSelectedItem());
 			}
 		});

@@ -36,7 +36,7 @@ public class Connexion {
 
 	/**
 	 * Launch the application.
-	 */
+	 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -51,19 +51,19 @@ public class Connexion {
 				//WebLookAndFeel.setDecorateAllWindows(true);
 			}
 		});
-	}
+	}*/
 	/**
 	 * Create the application.
 	 */
 	public Connexion(HashMap<String, Object> rmi) {
 		this.rmi = rmi ;
-		initialize();
+		initialize(rmi);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(HashMap<String, Object> rmi) {
 		frmUltimateSocietyMessenger = new JFrame();
 		frmUltimateSocietyMessenger.getContentPane().setBackground(new Color(0, 102, 204));
 		frmUltimateSocietyMessenger.setTitle("Connexion \u00E0 Ultimate Society Messenger");
@@ -112,7 +112,7 @@ public class Connexion {
 				try {
 					if (((_UserDB)rmi.get("UserDB")).connect(user, new String(pw))){
 						if (user.equalsIgnoreCase("Admin")) {
-							MainMenuAdmin mma = new MainMenuAdmin();
+							MainMenuAdmin mma = new MainMenuAdmin(rmi);
 							mma.setLocationRelativeTo(null);
 							mma.setResizable(false);
 							mma.setVisible(true);
@@ -126,7 +126,7 @@ public class Connexion {
 							frmUltimateSocietyMessenger.dispose();
 						}
 					} else {
-						JOptionPane.showMessageDialog(null, "Erreur d'authentification réessayer !");
+						JOptionPane.showMessageDialog(null, "Erreur d'authentification rï¿½essayer !");
 					}
 				} catch (HeadlessException | RemoteException e) {
 					e.printStackTrace();

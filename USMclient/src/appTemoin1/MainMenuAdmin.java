@@ -106,7 +106,7 @@ public class MainMenuAdmin extends JFrame {
 		btDeleteTask.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				CreerChat cc = new CreerChat();
+				CreerChat cc = new CreerChat(rmi);
 				cc.setLocationRelativeTo(null);
 				cc.setResizable(false);
 				cc.setVisible(true);
@@ -123,7 +123,7 @@ public class MainMenuAdmin extends JFrame {
 		btDeleteArticle.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				DeleteArticle da = new DeleteArticle();
+				DeleteArticle da = new DeleteArticle(rmi);
 				da.setLocationRelativeTo(null);
 				da.setResizable(false);
 				da.setVisible(true);
@@ -144,7 +144,7 @@ public class MainMenuAdmin extends JFrame {
 		btAddTask.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				AddTask at = new AddTask();
+				AddTask at = new AddTask(rmi);
 				at.setLocationRelativeTo(null);
 				at.setResizable(false);
 				at.setVisible(true);
@@ -161,7 +161,7 @@ public class MainMenuAdmin extends JFrame {
 		btAddArticle.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				createArticle ca = new createArticle();
+				createArticle ca = new createArticle(rmi);
 				ca.setLocationRelativeTo(null);
 				ca.setResizable(false);
 				ca.setVisible(true);
@@ -204,7 +204,7 @@ public class MainMenuAdmin extends JFrame {
 		btAddGroup.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				CreerGroupe cg = new CreerGroupe();
+				CreerGroupe cg = new CreerGroupe(rmi);
 				cg.setLocationRelativeTo(null);
 				cg.setResizable(false);
 				cg.setVisible(true);

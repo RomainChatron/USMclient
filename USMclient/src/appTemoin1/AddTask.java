@@ -16,6 +16,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 
@@ -28,7 +29,7 @@ public class AddTask extends JFrame {
 
 	/**
 	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -40,12 +41,12 @@ public class AddTask extends JFrame {
 				}
 			}
 		});
-	}
+	} */
 
 	/**
 	 * Create the frame.
 	 */
-	public AddTask() {
+	public AddTask(HashMap<String, Object> rmi) {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(AddTask.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 		setTitle("Ultimate Society Messenger");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -79,18 +80,18 @@ public class AddTask extends JFrame {
 		lblNewLabel_3.setBounds(146, 167, 96, 20);
 		contentPane.add(lblNewLabel_3);
 		
-		String[] exemplesGroup = { "Developpement C", "Kepp calm i'm global", "The 100 c'est pété", "Laziness"};
+		String[] exemplesGroup = { "Developpement C", "Kepp calm i'm global", "The 100 c'est pï¿½tï¿½", "Laziness"};
 		JComboBox cbGroup = new JComboBox(exemplesGroup);
 		cbGroup.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
-				// ici récuperer 
+				// ici rï¿½cuperer 
 				System.out.println("test : " + cbGroup.getSelectedItem());
 			}
 		});
 		cbGroup.setBounds(256, 207, 147, 26);
 		contentPane.add(cbGroup);
 		
-		String[] exemplesUser = { "Rémi", "Anass", "Romain", "LéaH"};
+		String[] exemplesUser = { "Rï¿½mi", "Anass", "Romain", "Lï¿½aH"};
 		JComboBox cbUser = new JComboBox(exemplesUser);
 		cbUser.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -100,7 +101,7 @@ public class AddTask extends JFrame {
 		cbUser.setBounds(256, 249, 147, 26);
 		contentPane.add(cbUser);
 		
-		String[] exemplesTask = { "Faible", "Moyen", "Elevé", "Très important"};
+		String[] exemplesTask = { "Faible", "Moyen", "Elevï¿½", "Trï¿½s important"};
 		JComboBox cbTypeTask = new JComboBox(exemplesTask);
 		cbTypeTask.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -120,7 +121,7 @@ public class AddTask extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				MainMenuAdmin mma = new MainMenuAdmin();
+				MainMenuAdmin mma = new MainMenuAdmin(rmi);
 				mma.setLocationRelativeTo(null);
 				mma.setResizable(false);
 				mma.setVisible(true);

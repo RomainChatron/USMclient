@@ -79,7 +79,7 @@ public class DeleteGroupe extends JFrame {
 		btnNewButton_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				MainMenuAdmin mma = new MainMenuAdmin();
+				MainMenuAdmin mma = new MainMenuAdmin(rmi);
 				mma.setLocationRelativeTo(null);
 				mma.setResizable(false);
 				mma.setVisible(true);
