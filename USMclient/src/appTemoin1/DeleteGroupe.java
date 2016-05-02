@@ -66,7 +66,7 @@ public class DeleteGroupe extends JFrame {
 		JLabel lblSelectionnerUnGroupe = new JLabel("Selectionner un groupe");
 		lblSelectionnerUnGroupe.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		lblSelectionnerUnGroupe.setForeground(Color.WHITE);
-		lblSelectionnerUnGroupe.setBounds(81, 105, 172, 20);
+		lblSelectionnerUnGroupe.setBounds(116, 86, 172, 20);
 		contentPane.add(lblSelectionnerUnGroupe);
 		
 		JLabel label = new JLabel("");
@@ -83,7 +83,7 @@ public class DeleteGroupe extends JFrame {
 			}
 			
 			JComboBox cbGroups = new JComboBox(allGroups);
-			cbGroups.setBounds(61, 118, 281, 26);
+			cbGroups.setBounds(29, 118, 336, 26);
 			contentPane.add(cbGroups);
 			
 		

@@ -164,7 +164,7 @@ public class Vue_Groupe extends JFrame {
 		btnChatDuGroupe.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				GroupChat gC = new GroupChat();
+				GroupChat gC = new GroupChat(rmi, group);
 				gC.setLocationRelativeTo(null);
 				gC.setResizable(false);
 				gC.setVisible(true);
