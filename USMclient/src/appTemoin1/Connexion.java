@@ -106,8 +106,8 @@ public class Connexion {
 			public void mouseClicked(MouseEvent arg0) {
 				/*char[] pw = txtPw.getPassword();
 				String user = txtUser.getText();*/
-				String pw = "coucou";
-				String user = "Dakaya";
+				String pw = "cf4b23e2";
+				String user = "lermitev";
 				_User moi ;
 				try {
 					if (((_UserDB)rmi.get("UserDB")).connect(user, new String(pw))){

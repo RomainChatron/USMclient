@@ -28,10 +28,10 @@ import javax.swing.ImageIcon;
 public class createUser extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField txtNom;
+	private JTextField txtPrenom;
+	private JTextField txtEmail;
+	private JTextField textJob;
 	
 	
 
@@ -76,11 +76,11 @@ public class createUser extends JFrame {
 		lblNom.setBounds(121, 116, 52, 20);
 		contentPane.add(lblNom);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
-		textField.setBounds(205, 114, 194, 26);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		txtNom = new JTextField();
+		txtNom.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
+		txtNom.setBounds(205, 114, 194, 26);
+		contentPane.add(txtNom);
+		txtNom.setColumns(10);
 		
 		JLabel lblPrnom = new JLabel("Pr\u00E9nom ");
 		lblPrnom.setForeground(Color.WHITE);
@@ -88,17 +88,17 @@ public class createUser extends JFrame {
 		lblPrnom.setBounds(121, 160, 69, 20);
 		contentPane.add(lblPrnom);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
-		textField_1.setBounds(205, 158, 194, 26);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		txtPrenom = new JTextField();
+		txtPrenom.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
+		txtPrenom.setBounds(205, 158, 194, 26);
+		contentPane.add(txtPrenom);
+		txtPrenom.setColumns(10);
 		
-		textField_2 = new JTextField();
-		textField_2.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
-		textField_2.setBounds(205, 200, 194, 26);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
+		txtEmail = new JTextField();
+		txtEmail.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
+		txtEmail.setBounds(205, 200, 194, 26);
+		contentPane.add(txtEmail);
+		txtEmail.setColumns(10);
 		
 		JLabel lblEmail = new JLabel("Email ");
 		lblEmail.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
@@ -112,11 +112,11 @@ public class createUser extends JFrame {
 		lblJob.setBounds(121, 244, 52, 20);
 		contentPane.add(lblJob);
 		
-		textField_3 = new JTextField();
-		textField_3.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
-		textField_3.setBounds(205, 242, 194, 26);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
+		textJob = new JTextField();
+		textJob.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
+		textJob.setBounds(205, 242, 194, 26);
+		contentPane.add(textJob);
+		textJob.setColumns(10);
 		
 		JButton btAddUser = new JButton("Cr\u00E9er Utilisateur");
 		btAddUser.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
@@ -127,18 +127,19 @@ public class createUser extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				try {
 				String firstName, lastName, email, job;
-				lastName = lblNom.getText();
-				firstName = lblPrnom.getText();
-				email = lblEmail.getText();
-				job = lblJob.getText();
+				lastName = txtNom.getText();
+				firstName = txtPrenom.getText();
+				email = txtEmail.getText();
+				job = textJob.getText();
 				
 				_User u =  ((_ObjectBuilder) rmi.get("ObjectBuilder")).createUser();
 				
-				String userName = ((_User)rmi.get("User")).userName(firstName, lastName);
-				String passWord = ((_User)rmi.get("User")).password();
-				JOptionPane.showMessageDialog(null, "L'utilisateur a bien été créé !");
-				
+				String userName = u.userName(firstName, lastName);
+				String passWord = u.password();
+			
 				((_UserDB) rmi.get("UserDB")).addUser(userName, passWord, firstName, lastName, email);
+				
+				JOptionPane.showMessageDialog(null, "L'utilisateur a bien \u00E9t\u00E9 cr\u00E9\u00E9 !");
 				
 				} catch (RemoteException e1) {
 					e1.printStackTrace();

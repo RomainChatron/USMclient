@@ -120,6 +120,10 @@ public class MainMenuAdmin extends JFrame {
 		contentPane.add(btDeleteTask);
 		
 		JButton btDeleteArticle = new JButton("Supprimer Article\r\n");
+		btDeleteArticle.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btDeleteArticle.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {

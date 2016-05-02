@@ -46,7 +46,7 @@ public class UpdateUser extends JFrame {
 	public UpdateUser() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(UpdateUser.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 		setTitle("Ultimate Society Messenger");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 554, 428);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 102, 204));
@@ -119,7 +119,8 @@ public class UpdateUser extends JFrame {
 				ump.setLocationRelativeTo(null);
 				ump.setResizable(false);
 				ump.setVisible(true);*/
-				contentPane.setVisible(false);
+				//contentPane.setVisible(false);
+				dispose();
 			}
 		});
 		btnAnnuler.setBackground(Color.BLACK);
