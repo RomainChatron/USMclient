@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
 
 import vInterface._Group;
@@ -25,12 +26,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
 import java.util.HashMap;
+import javax.swing.JTextPane;
 
 public class CreerGroupe extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -66,41 +67,41 @@ public class CreerGroupe extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(CreerGroupe.class.getResource("/appTemoin1/images/OMGFDP.png")));
-		lblNewLabel.setBounds(33, 11, 124, 71);
+		lblNewLabel.setBounds(75, 46, 124, 71);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nom");
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(31, 83, 54, 20);
+		lblNewLabel_1.setBounds(51, 154, 54, 20);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Description");
 		lblNewLabel_2.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		lblNewLabel_2.setForeground(Color.WHITE);
-		lblNewLabel_2.setBounds(33, 126, 94, 20);
+		lblNewLabel_2.setBounds(33, 207, 94, 20);
 		contentPane.add(lblNewLabel_2);
 		
 		textField = new JTextField();
 		textField.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
-		textField.setBounds(137, 80, 299, 26);
+		textField.setBounds(137, 151, 299, 26);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
-		textField_1.setBounds(137, 122, 299, 149);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		JTextArea textArea = new JTextArea();
+		textArea.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
+		textArea.setBounds(137, 202, 299, 78);
+		contentPane.add(textArea);
+		textArea.setLineWrap(true);
 		
-		JButton btnNewButton = new JButton("Cr\u00E9er Groupe");
+		JButton btnNewButton = new JButton("Créer Groupe");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
 					String Name, Desc;
 					Name = textField.getText();
-					Desc = textField_1.getText();
+					Desc = textArea.getText();
 
 					((_GroupDB) rmi.get("GroupDB")).addGroup(Name, Desc);
 					
@@ -129,5 +130,6 @@ public class CreerGroupe extends JFrame {
 		btnNewButton_1.setForeground(Color.WHITE);
 		btnNewButton_1.setBounds(321, 308, 115, 29);
 		contentPane.add(btnNewButton_1);
+		
 	}
 }
