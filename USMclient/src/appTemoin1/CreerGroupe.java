@@ -6,15 +6,24 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import vInterface._Group;
+import vInterface._ObjectBuilder;
+import vInterface._User;
+import vInterfaceDB._GroupDB;
+import vInterfaceDB._UserDB;
+
 import java.awt.Color;
 import java.awt.Toolkit;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
 import java.util.HashMap;
 
 public class CreerGroupe extends JFrame {
@@ -85,6 +94,23 @@ public class CreerGroupe extends JFrame {
 		textField_1.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Cr\u00E9er Groupe");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					String Name, Desc;
+					Name = textField.getText();
+					Desc = textField_1.getText();
+
+					((_GroupDB) rmi.get("GroupDB")).addGroup(Name, Desc);
+					
+					JOptionPane.showMessageDialog(null, "Le groupe a bien été crée !");
+					
+					} catch (RemoteException e1) {
+						e1.printStackTrace();
+					}
+			}
+		});
 		btnNewButton.setBackground(Color.BLACK);
 		btnNewButton.setForeground(Color.WHITE);
 		btnNewButton.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));

@@ -82,6 +82,10 @@ public class MainMenu extends JFrame {
 		btnCrerUnGroupe.setHorizontalAlignment(SwingConstants.LEFT);
 		btnCrerUnGroupe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				CreerGroupe cg = new CreerGroupe(rmi);
+				cg.setLocationRelativeTo(null);
+				cg.setResizable(false);
+				cg.setVisible(true);
 			}
 		});
 		btnCrerUnGroupe.setIcon(new ImageIcon(MainMenu.class.getResource("/appTemoin1/images/OMGFDP.png")));
