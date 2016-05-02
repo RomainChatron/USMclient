@@ -51,7 +51,7 @@ public class createArticle extends JFrame {
 	public createArticle() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(createArticle.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 		setTitle("Ultimate Sociey Messenger");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 662, 772);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 102, 204));
