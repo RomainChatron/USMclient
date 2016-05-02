@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
 
 public class DeleteGroupe extends JFrame {
 
@@ -24,7 +25,7 @@ public class DeleteGroupe extends JFrame {
 
 	/**
 	 * Launch the application.
-	 */
+	 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -36,12 +37,12 @@ public class DeleteGroupe extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
 	 */
-	public DeleteGroupe() {
+	public DeleteGroupe(HashMap<String, Object> rmi) {
 		setTitle("Ultimate Society Messenger");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(DeleteGroupe.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

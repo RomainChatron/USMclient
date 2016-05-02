@@ -64,7 +64,7 @@ public class MainMenuAdmin extends JFrame {
 		btDeleteGroup.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				DeleteGroupe dg = new DeleteGroupe();
+				DeleteGroupe dg = new DeleteGroupe(rmi);
 				dg.setLocationRelativeTo(null);
 				dg.setResizable(false);
 				dg.setVisible(true);
@@ -81,7 +81,7 @@ public class MainMenuAdmin extends JFrame {
 		btDeleteUser.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				DeleteUser dl = new DeleteUser();
+				DeleteUser dl = new DeleteUser(rmi);
 				dl.setLocationRelativeTo(null);
 				dl.setResizable(false);
 				dl.setVisible(true);

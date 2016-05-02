@@ -6,12 +6,20 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import vInterface._User;
+import vInterfaceDB._UserDB;
+import vInterfaceDB._UserGroupDB;
+import vInterface._ObjectBuilder;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
+import java.util.HashMap;
 import java.awt.Toolkit;
 import java.awt.Color;
 import java.awt.Font;
@@ -24,10 +32,12 @@ public class createUser extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	
+	HashMap<String, Object> rmi ;
 
 	/**
 	 * Launch the application.
-	 */
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -42,11 +52,13 @@ public class createUser extends JFrame {
 			}
 		});
 	}
-
+ */
 	/**
 	 * Create the frame.
 	 */
-	public createUser() {
+	public createUser(HashMap<String, Object> rmi) {
+		this.rmi = rmi; 
+		
 		setBackground(new Color(0, 102, 204));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(createUser.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 		setTitle("Ultimate Society Messenger");
@@ -113,8 +125,26 @@ public class createUser extends JFrame {
 		btAddUser.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// ajouter user en base et créer objet
-				JOptionPane.showMessageDialog(null, "L'utilisateur a bien été créé !");
+				try {
+				String firstName, lastName, email, job;
+				lastName = lblNom.getText();
+				firstName = lblPrnom.getText();
+				email = lblEmail.getText();
+				job = lblJob.getText();
+				
+				_User u =  ((_ObjectBuilder) rmi.get("ObjectBuilder")).createUser();
+				
+				String userName = ((_User)rmi.get("User")).userName(firstName, lastName);
+				String passWord = ((_User)rmi.get("User")).password();
+				JOptionPane.showMessageDialog(null, "L'utilisateur a bien Ã©tÃ© crÃ©Ã© !");
+				
+				((_UserDB) rmi.get("UserDB")).addUser(userName, passWord, firstName, lastName, email);
+				
+				} catch (RemoteException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		btAddUser.setBounds(121, 300, 162, 29);
@@ -127,7 +157,7 @@ public class createUser extends JFrame {
 		btnMenu.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				MainMenuAdmin mma = new MainMenuAdmin();
+				MainMenuAdmin mma = new MainMenuAdmin(rmi);
 				mma.setLocationRelativeTo(null);
 				mma.setResizable(false);
 				mma.setVisible(true);

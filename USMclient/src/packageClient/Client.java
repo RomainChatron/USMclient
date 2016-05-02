@@ -7,7 +7,6 @@ import java.rmi.RemoteException;
 import java.util.HashMap;
 
 import appTemoin1.Connexion;
-import appTémoin.app1;
 import vInterface.*;
 import vInterfaceDB._GroupDB;
 import vInterfaceDB._UserDB;

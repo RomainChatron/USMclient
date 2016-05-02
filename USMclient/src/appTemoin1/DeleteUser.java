@@ -15,6 +15,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
 
 public class DeleteUser extends JFrame {
 
@@ -22,7 +23,7 @@ public class DeleteUser extends JFrame {
 
 	/**
 	 * Launch the application.
-	 */
+	 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -34,12 +35,12 @@ public class DeleteUser extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
 	 */
-	public DeleteUser() {
+	public DeleteUser(HashMap<String, Object> rmi) {
 		setTitle("Ultimate Society Messenger");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(DeleteUser.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -77,7 +78,7 @@ public class DeleteUser extends JFrame {
 		btnAnnuler.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				MainMenuAdmin mma = new MainMenuAdmin();
+				MainMenuAdmin mma = new MainMenuAdmin(rmi);
 				mma.setLocationRelativeTo(null);
 				mma.setResizable(false);
 				mma.setVisible(true);
