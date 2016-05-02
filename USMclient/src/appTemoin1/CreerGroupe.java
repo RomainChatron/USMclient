@@ -66,30 +66,30 @@ public class CreerGroupe extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(CreerGroupe.class.getResource("/appTemoin1/images/OMGFDP.png")));
-		lblNewLabel.setBounds(40, 30, 124, 71);
+		lblNewLabel.setBounds(33, 11, 124, 71);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("Nom");
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
-		lblNewLabel_1.setBounds(108, 144, 54, 20);
+		lblNewLabel_1.setBounds(31, 83, 54, 20);
 		contentPane.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Description");
 		lblNewLabel_2.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		lblNewLabel_2.setForeground(Color.WHITE);
-		lblNewLabel_2.setBounds(108, 183, 94, 20);
+		lblNewLabel_2.setBounds(33, 126, 94, 20);
 		contentPane.add(lblNewLabel_2);
 		
 		textField = new JTextField();
 		textField.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
-		textField.setBounds(213, 142, 146, 26);
+		textField.setBounds(137, 80, 299, 26);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
 		textField_1 = new JTextField();
 		textField_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
-		textField_1.setBounds(213, 181, 146, 26);
+		textField_1.setBounds(137, 122, 299, 149);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
@@ -114,7 +114,7 @@ public class CreerGroupe extends JFrame {
 		btnNewButton.setBackground(Color.BLACK);
 		btnNewButton.setForeground(Color.WHITE);
 		btnNewButton.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
-		btnNewButton.setBounds(108, 282, 142, 29);
+		btnNewButton.setBounds(137, 308, 142, 29);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Annuler");
@@ -127,7 +127,7 @@ public class CreerGroupe extends JFrame {
 		btnNewButton_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		btnNewButton_1.setBackground(Color.BLACK);
 		btnNewButton_1.setForeground(Color.WHITE);
-		btnNewButton_1.setBounds(265, 282, 115, 29);
+		btnNewButton_1.setBounds(321, 308, 115, 29);
 		contentPane.add(btnNewButton_1);
 	}
 }
