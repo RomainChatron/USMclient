@@ -66,8 +66,10 @@ public class GroupChat extends JFrame {
 			c.setParticipants(group.getListMember());
 			c.setParticipants(group.getListAdmin());
 			
-			
-			setContentPane(c.displayChat());
+			JPanel jp = new JPanel();
+			jp.add(c.displayChat());
+			add(jp);
+			jp.setVisible(true);
 			
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
