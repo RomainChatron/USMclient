@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import vInterface._Group;
+
 import java.awt.Toolkit;
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -16,6 +19,8 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
+import java.util.HashMap;
 import java.awt.SystemColor;
 
 public class Vue_Groupe extends JFrame {
@@ -25,7 +30,7 @@ public class Vue_Groupe extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -36,12 +41,13 @@ public class Vue_Groupe extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
 	 */
-	public Vue_Groupe() {
+	public Vue_Groupe(HashMap<String, Object> rmi, _Group group) {
+		try {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Vue_Groupe.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 		setTitle("Ultimate Society Messenger");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,7 +59,10 @@ public class Vue_Groupe extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Bienvenue sur le groupe <Group>");
+		JLabel lblNewLabel;
+		
+			lblNewLabel = new JLabel("Bienvenue sur le groupe " + group.getName());
+		
 		lblNewLabel.setBackground(Color.WHITE);
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Snap ITC", Font.BOLD, 24));
@@ -128,10 +137,11 @@ public class Vue_Groupe extends JFrame {
 		btRetour.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				UserMainPage ump = new UserMainPage();
+				//TODO
+				/*UserMainPage ump = new UserMainPage();
 				ump.setLocationRelativeTo(null);
 				ump.setResizable(false);
-				ump.setVisible(true);
+				ump.setVisible(true);*/
 				contentPane.setVisible(false);
 			}
 		});
@@ -168,5 +178,9 @@ public class Vue_Groupe extends JFrame {
 		txtrLeDeuxime.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		txtrLeDeuxime.setBounds(245, 634, 441, 80);
 		contentPane.add(txtrLeDeuxime);
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 }

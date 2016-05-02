@@ -3,13 +3,13 @@ package packageClient;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
-import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
+import appTemoin1.Connexion;
 import appTémoin.app1;
 import vInterface.*;
+import vInterfaceDB._GroupDB;
 import vInterfaceDB._UserDB;
 import vInterfaceDB._UserGroupDB;
 
@@ -26,18 +26,20 @@ public class Client {
 			String urlObjectBuilder = "rmi://"+IPSERVER+":"+PORT+"/ObjectBuilder";
 			String urlUserDB = "rmi://"+IPSERVER+":"+PORT+"/UserDB";
 			String urlUserGroupDB = "rmi://"+IPSERVER+":"+PORT+"/UserGroupDB";
+			String urlGroupDB = "rmi://"+IPSERVER+":"+PORT+"/GroupDB";
 			
 			_ObjectBuilder ob = (_ObjectBuilder)Naming.lookup(urlObjectBuilder);
 			_UserDB userDB = (_UserDB)Naming.lookup(urlUserDB);
 			_UserGroupDB userGroupDB = (_UserGroupDB)Naming.lookup(urlUserGroupDB);
+			_GroupDB GroupDB = (_GroupDB)Naming.lookup(urlGroupDB);
 			
 			rmi.put("ObjectBuilder", ob);
 			rmi.put("UserDB", userDB);
 			rmi.put("UserGroupDB", userGroupDB);
+			rmi.put("GroupDB", GroupDB);
 			
 			 
-			app1 JFCon = new app1(rmi);
-			JFCon.frmUltimateSocietyMessenger.setVisible(true);			
+			Connexion JFCon = new Connexion(rmi);
 			
 			
 			/* Test Perso */

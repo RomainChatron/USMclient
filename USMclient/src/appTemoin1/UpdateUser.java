@@ -115,10 +115,10 @@ public class UpdateUser extends JFrame {
 		btnAnnuler.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				UserMainPage ump = new UserMainPage();
+				/*UserMainPage ump = new UserMainPage();
 				ump.setLocationRelativeTo(null);
 				ump.setResizable(false);
-				ump.setVisible(true);
+				ump.setVisible(true);*/
 				contentPane.setVisible(false);
 			}
 		});

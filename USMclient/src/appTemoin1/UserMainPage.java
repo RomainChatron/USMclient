@@ -6,6 +6,12 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import vInterface._Group;
+import vInterface._User;
+import vInterfaceDB._UserGroupDB;
+import vInterfaceDB._GroupDB;
+
 import java.awt.Toolkit;
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -18,6 +24,10 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import javax.swing.JComboBox;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
@@ -35,7 +45,7 @@ public class UserMainPage extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -48,12 +58,13 @@ public class UserMainPage extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
 	 */
-	public UserMainPage() {
+	public UserMainPage(HashMap<String, Object> rmi, _User moi) {
+		try {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(UserMainPage.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 		setTitle("Ultimate Society Messenger");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,7 +75,7 @@ public class UserMainPage extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblBonjour = new JLabel("Bonjour, <User> !");
+		JLabel lblBonjour = new JLabel("Bonjour, " + moi.getFirstName() +" !");
 		lblBonjour.setFont(new Font("Snap ITC", Font.BOLD, 24));
 		lblBonjour.setForeground(Color.WHITE);
 		lblBonjour.setBounds(60, 16, 297, 59);
@@ -106,9 +117,24 @@ public class UserMainPage extends JFrame {
 		lblNewLabel_1.setBounds(291, 87, 189, 57);
 		contentPane.add(lblNewLabel_1);
 		
+		ArrayList<Integer> idGs = ((_UserGroupDB)rmi.get("UserGroupDB")).getGroups(moi.getUserName());
+		ArrayList<_Group> listGrp = new ArrayList<_Group>();
+		String groups = "\r\n";
+		String[] jCBgrp ;
+		for(int i = 0 ; i < idGs.size(); i++) {
+			listGrp.add(((_GroupDB)rmi.get("GroupDB")).getGroup(idGs.get(i)));
+			groups += "- " + listGrp.get(i).getName();
+			groups += "\r\n";
+		}
+		jCBgrp = new String[listGrp.size()+1];
+		jCBgrp[0] = "Choisir un groupe";
+		for (int i = 1 ; i < jCBgrp.length ; i++) {
+			jCBgrp[i] = listGrp.get(i-1).getName();
+		}
+		
 		JTextArea txtrDeveloppementC = new JTextArea();
 		txtrDeveloppementC.setBackground(SystemColor.inactiveCaption);
-		txtrDeveloppementC.setText("\r\n  - Developpement C\r\n  - Keep calm i'm global\r\n  - The 100 c'est p\u00E9t\u00E9\r\n  - Laziness ");
+		txtrDeveloppementC.setText(groups);
 		txtrDeveloppementC.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		txtrDeveloppementC.setBounds(15, 155, 177, 229);
 		contentPane.add(txtrDeveloppementC);
@@ -164,11 +190,10 @@ public class UserMainPage extends JFrame {
 		btnNewButton_2.setBounds(15, 439, 164, 51);
 		contentPane.add(btnNewButton_2);
 		
-		String[] exemples = { "Developpement C", "Kepp calm i'm global", "The 100 c'est pété", "Laziness"};
-		JComboBox cbGroup = new JComboBox(exemples);
+		JComboBox cbGroup = new JComboBox(jCBgrp);
 		cbGroup.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				Vue_Groupe vG = new Vue_Groupe();
+				Vue_Groupe vG = new Vue_Groupe(rmi, listGrp.get(cbGroup.getSelectedIndex()-1));
 				vG.setLocationRelativeTo(null);
 				vG.setResizable(false);
 				vG.setVisible(true);
@@ -182,7 +207,7 @@ public class UserMainPage extends JFrame {
 		btnDeconnexion.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Connexion window = new Connexion();
+				//Connexion window = new Connexion(); // TODO
 				contentPane.setVisible(false);
 			}
 		});
@@ -207,5 +232,9 @@ public class UserMainPage extends JFrame {
 			        updateLabel(petName);
 			    }
 	}*/
+		} catch (RemoteException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 }
 }
