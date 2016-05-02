@@ -105,11 +105,7 @@ public class createArticle extends JFrame {
 		btnNewButton_2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				MainMenuAdmin mma = new MainMenuAdmin(rmi);
-				mma.setLocationRelativeTo(null);
-				mma.setResizable(false);
-				mma.setVisible(true);
-				contentPane.setVisible(false);
+				dispose();
 			}
 		});
 		btnNewButton_2.setBackground(Color.BLACK);

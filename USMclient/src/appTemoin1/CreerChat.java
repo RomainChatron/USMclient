@@ -48,7 +48,7 @@ public class CreerChat extends JFrame {
 	public CreerChat(HashMap<String, Object> rmi) {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(CreerChat.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 		setTitle("Ultimate Society Messenger");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 536, 415);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 102, 204));
@@ -101,11 +101,7 @@ public class CreerChat extends JFrame {
 		btnMenu.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				MainMenuAdmin C1 = new MainMenuAdmin(rmi);
-				C1.setLocationRelativeTo(null);
-				C1.setResizable(false);
-				C1.setVisible(true);
-				contentPane.setVisible(false);
+				dispose();
 			}
 		});
 		btnMenu.setBounds(301, 281, 115, 29);

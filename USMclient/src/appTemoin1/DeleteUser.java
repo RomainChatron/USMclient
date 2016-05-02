@@ -54,7 +54,7 @@ public class DeleteUser extends JFrame {
 	public DeleteUser(HashMap<String, Object> rmi) {
 		setTitle("Ultimate Society Messenger");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(DeleteUser.class.getResource("/appTemoin1/images/fleches-echange.gif")));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 445, 275);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 102, 204));
@@ -116,11 +116,7 @@ public class DeleteUser extends JFrame {
 		btnAnnuler.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				MainMenuAdmin mma = new MainMenuAdmin(rmi);
-				mma.setLocationRelativeTo(null);
-				mma.setResizable(false);
-				mma.setVisible(true);
-				contentPane.setVisible(false);
+				dispose();
 			}
 		});
 		btnAnnuler.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));

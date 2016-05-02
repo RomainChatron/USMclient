@@ -68,7 +68,6 @@ public class MainMenuAdmin extends JFrame {
 				dg.setLocationRelativeTo(null);
 				dg.setResizable(false);
 				dg.setVisible(true);
-				contentPane.setVisible(false);
 			}
 		});
 		btDeleteGroup.setHorizontalAlignment(SwingConstants.LEFT);
@@ -85,7 +84,6 @@ public class MainMenuAdmin extends JFrame {
 				dl.setLocationRelativeTo(null);
 				dl.setResizable(false);
 				dl.setVisible(true);
-				contentPane.setVisible(false);
 			}
 		});
 		btDeleteUser.addActionListener(new ActionListener() {
@@ -110,7 +108,6 @@ public class MainMenuAdmin extends JFrame {
 				cc.setLocationRelativeTo(null);
 				cc.setResizable(false);
 				cc.setVisible(true);
-				contentPane.setVisible(false);
 			}
 		});
 		btDeleteTask.setHorizontalAlignment(SwingConstants.LEFT);
@@ -131,7 +128,6 @@ public class MainMenuAdmin extends JFrame {
 				da.setLocationRelativeTo(null);
 				da.setResizable(false);
 				da.setVisible(true);
-				contentPane.setVisible(false);
 			}
 		});
 		btDeleteUser.addActionListener(new ActionListener() {
@@ -152,7 +148,6 @@ public class MainMenuAdmin extends JFrame {
 				at.setLocationRelativeTo(null);
 				at.setResizable(false);
 				at.setVisible(true);
-				contentPane.setVisible(false);
 			}
 		});
 		btAddTask.setHorizontalAlignment(SwingConstants.LEFT);
@@ -169,7 +164,6 @@ public class MainMenuAdmin extends JFrame {
 				ca.setLocationRelativeTo(null);
 				ca.setResizable(false);
 				ca.setVisible(true);
-				contentPane.setVisible(false);
 			}
 		});
 		btAddArticle.setHorizontalAlignment(SwingConstants.LEFT);
@@ -195,7 +189,6 @@ public class MainMenuAdmin extends JFrame {
 				cu.setLocationRelativeTo(null);
 				cu.setResizable(false);
 				cu.setVisible(true);
-				contentPane.setVisible(false);
 			}
 		});
 		btAddUser.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
@@ -212,7 +205,6 @@ public class MainMenuAdmin extends JFrame {
 				cg.setLocationRelativeTo(null);
 				cg.setResizable(false);
 				cg.setVisible(true);
-				contentPane.setVisible(false);
 			}
 		});
 		btAddGroup.setHorizontalAlignment(SwingConstants.LEFT);

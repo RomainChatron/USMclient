@@ -62,7 +62,7 @@ public class createUser extends JFrame {
 		setBackground(new Color(0, 102, 204));
 		setIconImage(Toolkit.getDefaultToolkit().getImage(createUser.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 		setTitle("Ultimate Society Messenger");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 480, 419);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(0, 102, 204));
@@ -158,11 +158,7 @@ public class createUser extends JFrame {
 		btnMenu.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				MainMenuAdmin mma = new MainMenuAdmin(rmi);
-				mma.setLocationRelativeTo(null);
-				mma.setResizable(false);
-				mma.setVisible(true);
-				contentPane.setVisible(false);
+				dispose();
 			}
 		});
 		btnMenu.setBounds(298, 300, 101, 29);
