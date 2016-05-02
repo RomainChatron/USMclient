@@ -66,7 +66,7 @@ public class DeleteGroupe extends JFrame {
 		JLabel lblSelectionnerUnGroupe = new JLabel("Selectionner un groupe");
 		lblSelectionnerUnGroupe.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		lblSelectionnerUnGroupe.setForeground(Color.WHITE);
-		lblSelectionnerUnGroupe.setBounds(81, 105, 172, 20);
+		lblSelectionnerUnGroupe.setBounds(61, 87, 172, 20);
 		contentPane.add(lblSelectionnerUnGroupe);
 		
 		JLabel label = new JLabel("");
