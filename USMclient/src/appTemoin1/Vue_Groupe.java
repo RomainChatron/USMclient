@@ -6,6 +6,7 @@ import javax.swing.border.EmptyBorder;
 
 import vInterface._Group;
 import vInterface._Task;
+import vInterface._User;
 import vInterfaceDB._TaskDB;
 
 import java.awt.Toolkit;
@@ -47,7 +48,7 @@ public class Vue_Groupe extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Vue_Groupe(HashMap<String, Object> rmi, _Group group) {
+	public Vue_Groupe(HashMap<String, Object> rmi, _Group group, _User moi) {
 		try {
 			ArrayList<_Task> listTask = ((_TaskDB)rmi.get("TaskDB")).getTasks(group.getIdG());
 			String tasks = "\r\n" ;
@@ -175,7 +176,7 @@ public class Vue_Groupe extends JFrame {
 			btnChatDuGroupe.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					GroupChat gC = new GroupChat(rmi, group);
+					GroupChat gC = new GroupChat(rmi, group, moi); // TODO : Chat via vueGroupe
 					gC.setLocationRelativeTo(null);
 					gC.setResizable(false);
 					gC.setVisible(true);

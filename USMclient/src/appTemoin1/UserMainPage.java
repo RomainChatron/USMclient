@@ -223,7 +223,7 @@ public class UserMainPage extends JFrame {
 			cbGroup.addItemListener(new ItemListener() {
 				public void itemStateChanged(ItemEvent e) {
 					if(e.getStateChange() == ItemEvent.SELECTED) {
-						Vue_Groupe vG = new Vue_Groupe(rmi, listGrp.get(cbGroup.getSelectedIndex()-1));
+						Vue_Groupe vG = new Vue_Groupe(rmi, listGrp.get(cbGroup.getSelectedIndex()-1), moi);
 						vG.setLocationRelativeTo(null);
 						vG.setResizable(false);
 						vG.setVisible(true);
