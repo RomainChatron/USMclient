@@ -52,7 +52,7 @@ public class SelectFile extends JFrame {
 		if (result == fileChooser.APPROVE_OPTION) {
 			System.out.println("je passe la");
 			try {
-				((_DataDB)rmi.get("DataDB")).addData(fileChooser.getSelectedFile().getAbsolutePath());
+				((_DataDB) rmi.get("DataDB")).addData(fileChooser.getSelectedFile().getAbsolutePath());
 			} catch (RemoteException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
