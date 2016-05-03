@@ -3,10 +3,15 @@ package appTemoin1;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import vInterface._Task;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -43,7 +48,7 @@ public class MainMenu extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MainMenu(HashMap<String, Object> rmi) {
+	public MainMenu(HashMap<String, Object> rmi, ArrayList<_Task> listTask) {
 		this.rmi = rmi ;
 		setIconImage(Toolkit.getDefaultToolkit().getImage(MainMenu.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 		setTitle("Ultimate Society Messenger");
@@ -59,7 +64,7 @@ public class MainMenu extends JFrame {
 		btnCrerUnArticle.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				createArticleUser cau = new createArticleUser();
+				createArticleUser cau = new createArticleUser(rmi);
 				cau.setLocationRelativeTo(null);
 				cau.setResizable(false);
 				cau.setVisible(true);
@@ -110,10 +115,15 @@ public class MainMenu extends JFrame {
 		btnGrerSesTches.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				Task t = new Task();
-				t.setLocationRelativeTo(null);
-				t.setResizable(false);
-				t.setVisible(true);
+				try {
+					Task t = new Task(rmi, listTask);
+					t.setLocationRelativeTo(null);
+					t.setResizable(false);
+					t.setVisible(true);
+				} catch (RemoteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		btnGrerSesTches.setIcon(new ImageIcon(MainMenu.class.getResource("/appTemoin1/images/005.png")));

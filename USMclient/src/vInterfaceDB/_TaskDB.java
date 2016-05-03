@@ -4,7 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import packageClient.TypeTask;
+import appTemoin1.TypeTask;
 import vInterface._Task;
 
 public interface _TaskDB extends Remote {

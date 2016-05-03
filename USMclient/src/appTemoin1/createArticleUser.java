@@ -21,6 +21,7 @@ import javax.swing.JTextPane;
 import javax.swing.JComboBox;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.HashMap;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
 
@@ -36,8 +37,8 @@ public class createArticleUser extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					createArticleUser frame = new createArticleUser();
-					frame.setVisible(true);
+					//createArticleUser frame = new createArticleUser();
+					//frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -48,7 +49,7 @@ public class createArticleUser extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public createArticleUser() {
+	public createArticleUser(HashMap<String, Object> rmi) {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(createArticleUser.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 		setTitle("Ultimate Sociey Messenger");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -77,14 +78,20 @@ public class createArticleUser extends JFrame {
 		contentPane.add(txtSaisissezVotreTitre);
 		txtSaisissezVotreTitre.setColumns(10);
 		
-		JButton btnAjouterUneImage = new JButton("Ajouter une image");
-		btnAjouterUneImage.setHorizontalAlignment(SwingConstants.LEFT);
-		btnAjouterUneImage.setIcon(new ImageIcon(createArticleUser.class.getResource("/appTemoin1/images/image-inserer-icone-7309-48.png")));
-		btnAjouterUneImage.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
-		btnAjouterUneImage.setBackground(Color.BLACK);
-		btnAjouterUneImage.setForeground(Color.WHITE);
-		btnAjouterUneImage.setBounds(33, 136, 219, 29);
-		contentPane.add(btnAjouterUneImage);
+		JButton btAddFile = new JButton("Ajouter un fichier");
+		btAddFile.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				SelectFile sf = new SelectFile(rmi);
+			}
+		});
+		btAddFile.setHorizontalAlignment(SwingConstants.LEFT);
+		btAddFile.setIcon(new ImageIcon(createArticleUser.class.getResource("/appTemoin1/images/image-inserer-icone-7309-48.png")));
+		btAddFile.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
+		btAddFile.setBackground(Color.BLACK);
+		btAddFile.setForeground(Color.WHITE);
+		btAddFile.setBounds(33, 136, 232, 29);
+		contentPane.add(btAddFile);
 		
 		JButton btnNewButton = new JButton("Publier sur mon journal");
 		btnNewButton.setBackground(Color.BLACK);
@@ -113,7 +120,7 @@ public class createArticleUser extends JFrame {
 		btnNewButton_2.setBounds(33, 648, 115, 29);
 		contentPane.add(btnNewButton_2);
 		
-		String[] exemplesGroup = { "Developpement C", "Kepp calm i'm global", "The 100 c'est pété", "Laziness"};
+		String[] exemplesGroup = { "Developpement C", "Kepp calm i'm global", "The 100", "Laziness"};
 		JComboBox cbGroup = new JComboBox(exemplesGroup);
 		cbGroup.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {

@@ -4,14 +4,18 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import vInterface._Article;
 import vInterface._Group;
 import vInterface._Task;
-import vInterface._User;
+import vInterfaceDB._ArticleDB;
+import vInterfaceDB._DataArticleDB;
+import vInterfaceDB._DataDB;
 import vInterfaceDB._TaskDB;
 
 import java.awt.Toolkit;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import javax.swing.JTextArea;
@@ -23,12 +27,21 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.awt.SystemColor;
+import javax.swing.JScrollPane;
+import javax.swing.JComboBox;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 @SuppressWarnings("serial")
 public class Vue_Groupe extends JFrame {
 
 	private JPanel contentPane;
+	private String affTxtArea = "";
+	private int idData;
 
+	public void setIdData(int idDa) {
+		this.idData = idDa;
+	}
 	/**
 	 * Launch the application.
 	 */
@@ -48,7 +61,7 @@ public class Vue_Groupe extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Vue_Groupe(HashMap<String, Object> rmi, _Group group, _User moi) {
+	public Vue_Groupe(HashMap<String, Object> rmi, _Group group) {
 		try {
 			ArrayList<_Task> listTask = ((_TaskDB)rmi.get("TaskDB")).getTasks(group.getIdG());
 			String tasks = "\r\n" ;
@@ -58,7 +71,7 @@ public class Vue_Groupe extends JFrame {
 			setIconImage(Toolkit.getDefaultToolkit().getImage(Vue_Groupe.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 			setTitle("Ultimate Society Messenger");
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			setBounds(100, 100, 935, 770);
+			setBounds(100, 100, 965, 791);
 			contentPane = new JPanel();
 			contentPane.setBackground(new Color(0, 102, 204));
 			contentPane.setForeground(new Color(0, 102, 204));
@@ -126,12 +139,12 @@ public class Vue_Groupe extends JFrame {
 			lblNewLabel_2.setBounds(-25, 179, 966, 5);
 			contentPane.add(lblNewLabel_2);
 			
-			JTextArea txtArticle1 = new JTextArea();
-			txtArticle1.setText("Le premier article ici");
-			txtArticle1.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
-			txtArticle1.setBounds(241, 201, 445, 417);
-			contentPane.add(txtArticle1);
-			
+			// Modification article :
+			ArrayList<_Article> info = ((_ArticleDB) rmi.get("ArticleDB")).getArticles(2);
+			String[] idArticles = new String[info.size()];
+			for (int y = 0 ; y < info.size() ; y++) {
+				idArticles[y] = ""+info.get(y).getIdA();
+			}
 			JTextArea textArea_2 = new JTextArea();
 			textArea_2.setBackground(SystemColor.inactiveCaption);
 			textArea_2.setText(tasks);
@@ -176,7 +189,7 @@ public class Vue_Groupe extends JFrame {
 			btnChatDuGroupe.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					GroupChat gC = new GroupChat(rmi, group, moi); // TODO : Chat via vueGroupe
+					GroupChat gC = new GroupChat(rmi, group);
 					gC.setLocationRelativeTo(null);
 					gC.setResizable(false);
 					gC.setVisible(true);
@@ -187,11 +200,76 @@ public class Vue_Groupe extends JFrame {
 			btnChatDuGroupe.setBounds(15, 455, 202, 48);
 			contentPane.add(btnChatDuGroupe);
 			
-			JTextArea txtrLeDeuxime = new JTextArea();
-			txtrLeDeuxime.setText("Le deuxi\u00E8me...");
-			txtrLeDeuxime.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
-			txtrLeDeuxime.setBounds(245, 634, 441, 80);
-			contentPane.add(txtrLeDeuxime);
+			JScrollPane scrollPane = new JScrollPane();
+			scrollPane.setBounds(246, 236, 414, 448);
+			contentPane.add(scrollPane);
+			
+			JTextArea txtArticle = new JTextArea();
+			scrollPane.setViewportView(txtArticle);
+			txtArticle.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
+			
+			// Modification article 2 :
+			JButton btFile = new JButton("Pas de pi\u00E8ce jointe");
+
+			btFile.setBackground(Color.BLACK);
+			btFile.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
+			btFile.setForeground(Color.WHITE);
+			btFile.setBounds(246, 690, 257, 29);
+			contentPane.add(btFile);
+			
+			JComboBox cbArticles = new JComboBox(idArticles);
+			cbArticles.addItemListener(new ItemListener() {
+				public void itemStateChanged(ItemEvent e) {
+					try {
+						if (e.getStateChange() == ItemEvent.SELECTED) {
+							ArrayList<Integer> getIdData;
+								getIdData = ((_DataArticleDB) rmi.get("DataArticleDB")).getDatas(Integer.parseInt(cbArticles.getItemAt(cbArticles.getSelectedIndex()).toString()));
+							
+							ArrayList<String>	getName = ((_DataArticleDB) rmi.get("DataArticleDB")).getDatasName(Integer.parseInt(cbArticles.getItemAt(cbArticles.getSelectedIndex()).toString()));
+							for (int i = 0 ; i < getIdData.size() ; i++) {
+								if (((_DataDB) rmi.get("DataDB")).isDataTxt(getIdData.get(i))) {
+									affTxtArea = ((_DataDB) rmi.get("DataDB")).getDataTxt(getIdData.get(i));
+									btFile.setText("Pas de pièce jointe");
+								} else {
+									setIdData(getIdData.get(i));
+									btFile.setText("Télécharger : " + getName.get(i));
+								}
+							}
+					    }
+					} catch (NumberFormatException | RemoteException e1) {
+						e1.printStackTrace();
+					}
+				}
+					
+			});
+			cbArticles.setBounds(246, 202, 140, 26);
+			contentPane.add(cbArticles);
+			
+			JButton btAff = new JButton("Afficher article");
+			btAff.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					txtArticle.setText("");
+					txtArticle.setText(affTxtArea);
+				}
+			});
+			btAff.setBackground(Color.BLACK);
+			btAff.setForeground(Color.WHITE);
+			btAff.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
+			btAff.setBounds(487, 201, 173, 29);
+			contentPane.add(btAff);
+			
+			btFile.addMouseListener(new MouseAdapter() {
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					if (btFile.getText().equals("Pas de pièce jointe")) {
+						JOptionPane.showMessageDialog(null, "Cette article n'a pas de pièce jointe !");
+					} else {
+						SelectPath sp = new SelectPath(rmi, idData);
+					}
+				}
+			});
+
 		} catch (RemoteException e1) {
 			e1.printStackTrace();
 		}
