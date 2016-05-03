@@ -7,9 +7,7 @@ import javax.swing.border.EmptyBorder;
 import packageClient.ChatC;
 import vInterface._ChatC;
 import vInterface._Group;
-import vInterface._Task;
 import vInterface._User;
-import vInterfaceDB._TaskDB;
 import vInterface._ChatServer;
 
 import java.awt.Toolkit;
@@ -20,7 +18,6 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
