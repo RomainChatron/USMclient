@@ -34,6 +34,7 @@ public class Client {
 			String urlDataDB = "rmi://"+IPSERVER+":"+PORT+"/DataDB";
 			String urlArticleDB = "rmi://"+IPSERVER+":"+PORT+"/ArticleDB";
 			String urlDataArticleDB = "rmi://"+IPSERVER+":"+PORT+"/DataArticleDB";
+			String urlChatServer = "rmi://"+IPSERVER+":"+PORT+"/ChatServer";
 			
 			_ObjectBuilder ob = (_ObjectBuilder)Naming.lookup(urlObjectBuilder);
 			_UserDB userDB = (_UserDB)Naming.lookup(urlUserDB);
@@ -43,6 +44,7 @@ public class Client {
 			_DataDB DataDB = (_DataDB)Naming.lookup(urlDataDB);
 			_ArticleDB ArticleDB = (_ArticleDB)Naming.lookup(urlArticleDB);
 			_DataArticleDB DataArticleDB = (_DataArticleDB)Naming.lookup(urlDataArticleDB);
+			_ChatServer ChatServer = (_ChatServer)Naming.lookup(urlChatServer);
 			
 			rmi.put("ObjectBuilder", ob);
 			rmi.put("UserDB", userDB);
@@ -52,6 +54,7 @@ public class Client {
 			rmi.put("DataDB", DataDB);
 			rmi.put("ArticleDB", ArticleDB);
 			rmi.put("DataArticleDB", DataArticleDB);
+			rmi.put("ChatServer", ChatServer);
 			
 			 
 			Connexion JFCon = new Connexion(rmi);
