@@ -16,6 +16,8 @@ public interface _Task extends Remote {
 	public boolean isDone() throws RemoteException ;
 	public int getIdG() throws RemoteException ;
 	public int getIdT() throws RemoteException ;
+	public String getTtString() throws RemoteException ;
+	public int getRank() throws RemoteException ;
 	
 	public void setIdT(int idT) throws RemoteException ;
 	public void setDesc(String desc1) throws RemoteException ;

@@ -75,6 +75,7 @@ public class UserMainPage extends JFrame {
 			 * Création de la string des task
 			 */
 			ArrayList<_Task> listTask = ((_TaskDB)rmi.get("TaskDB")).getTasks(moi.getUserName());
+			
 			String tasks = "\r\n";
 			for(int i = 0 ; i < listTask.size() ; i++) {
 				tasks += " - " + listTask.get(i).getName() + "\r\n";
@@ -95,7 +96,7 @@ public class UserMainPage extends JFrame {
 			
 			setIconImage(Toolkit.getDefaultToolkit().getImage(UserMainPage.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 			setTitle("Ultimate Society Messenger");
-			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			setBounds(100, 100, 898, 776);
 			contentPane = new JPanel();
 			contentPane.setBackground(new Color(0, 102, 204));
@@ -166,7 +167,7 @@ public class UserMainPage extends JFrame {
 			btnNewButton.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent arg0) {
-					MainMenu C1 = new MainMenu(rmi);
+					MainMenu C1 = new MainMenu(rmi, listTask);
 					C1.setLocationRelativeTo(null);
 					C1.setResizable(false);
 					C1.setVisible(true);

@@ -1,5 +1,6 @@
 package packageClient;
 
+
 public enum TypeTask {
 	
 	Low("Low", 1),
