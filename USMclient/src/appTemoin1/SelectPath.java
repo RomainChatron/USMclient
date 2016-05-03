@@ -53,7 +53,7 @@ public class SelectPath extends JFrame {
 		int result = fileChooser.showSaveDialog(this);
 		if (result == fileChooser.APPROVE_OPTION) {
 			try {
-				((_DataDB) rmi.get("ArticleDB")).saveData(idDa, fileChooser.getCurrentDirectory().getAbsolutePath());
+				((_DataDB) rmi.get("DataDB")).saveData(idDa, fileChooser.getCurrentDirectory().getAbsolutePath());
 			} catch (RemoteException e) {
 				e.printStackTrace();
 			}
