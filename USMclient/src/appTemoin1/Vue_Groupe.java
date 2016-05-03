@@ -141,7 +141,7 @@ public class Vue_Groupe extends JFrame {
 			contentPane.add(lblNewLabel_2);
 			
 			// Modification article :
-			ArrayList<_Article> info = ((_ArticleDB) rmi.get("ArticleDB")).getArticles(2);
+			ArrayList<_Article> info = ((_ArticleDB) rmi.get("ArticleDB")).getArticles(group.getIdG());
 			String[] idArticles = new String[info.size()];
 			for (int y = 0 ; y < info.size() ; y++) {
 				idArticles[y] = ""+info.get(y).getIdA();
