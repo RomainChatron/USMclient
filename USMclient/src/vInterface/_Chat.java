@@ -26,6 +26,7 @@ public interface _Chat extends Remote {
 		 * @throws RemoteException
 		 */
 		public void addMessage(String msg) throws RemoteException ;
+		
 
 		public void displayChat(JFrame contentPane) throws RemoteException;
 		/**
