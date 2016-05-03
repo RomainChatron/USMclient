@@ -8,6 +8,9 @@ import java.util.HashMap;
 
 import appTemoin1.Connexion;
 import vInterface.*;
+import vInterfaceDB._ArticleDB;
+import vInterfaceDB._DataArticleDB;
+import vInterfaceDB._DataDB;
 import vInterfaceDB._GroupDB;
 import vInterfaceDB._TaskDB;
 import vInterfaceDB._UserDB;
@@ -28,18 +31,27 @@ public class Client {
 			String urlUserGroupDB = "rmi://"+IPSERVER+":"+PORT+"/UserGroupDB";
 			String urlGroupDB = "rmi://"+IPSERVER+":"+PORT+"/GroupDB";
 			String urlTaskDB = "rmi://"+IPSERVER+":"+PORT+"/TaskDB";
+			String urlDataDB = "rmi://"+IPSERVER+":"+PORT+"/DataDB";
+			String urlArticleDB = "rmi://"+IPSERVER+":"+PORT+"/ArticleDB";
+			String urlDataArticleDB = "rmi://"+IPSERVER+":"+PORT+"/DataArticleDB";
 			
 			_ObjectBuilder ob = (_ObjectBuilder)Naming.lookup(urlObjectBuilder);
 			_UserDB userDB = (_UserDB)Naming.lookup(urlUserDB);
 			_UserGroupDB userGroupDB = (_UserGroupDB)Naming.lookup(urlUserGroupDB);
 			_GroupDB GroupDB = (_GroupDB)Naming.lookup(urlGroupDB);
 			_TaskDB TaskDB = (_TaskDB)Naming.lookup(urlTaskDB);
+			_DataDB DataDB = (_DataDB)Naming.lookup(urlDataDB);
+			_ArticleDB ArticleDB = (_ArticleDB)Naming.lookup(urlArticleDB);
+			_DataArticleDB DataArticleDB = (_DataArticleDB)Naming.lookup(urlDataArticleDB);
 			
 			rmi.put("ObjectBuilder", ob);
 			rmi.put("UserDB", userDB);
 			rmi.put("UserGroupDB", userGroupDB);
 			rmi.put("GroupDB", GroupDB);
 			rmi.put("TaskDB", TaskDB);
+			rmi.put("DataDB", DataDB);
+			rmi.put("ArticleDB", ArticleDB);
+			rmi.put("DataArticleDB", DataArticleDB);
 			
 			 
 			Connexion JFCon = new Connexion(rmi);

@@ -54,7 +54,6 @@ public class SelectFile extends JFrame {
 			try {
 				((_DataDB) rmi.get("DataDB")).addData(fileChooser.getSelectedFile().getAbsolutePath());
 			} catch (RemoteException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
