@@ -64,7 +64,7 @@ public class MainMenu extends JFrame {
 		btnCrerUnArticle.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				createArticleUser cau = new createArticleUser();
+				createArticleUser cau = new createArticleUser(rmi);
 				cau.setLocationRelativeTo(null);
 				cau.setResizable(false);
 				cau.setVisible(true);
