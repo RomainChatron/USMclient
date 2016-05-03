@@ -108,7 +108,7 @@ public class UserMainPage extends JFrame {
 			JLabel lblBonjour = new JLabel("Bonjour, " + moi.getFirstName() +" !");
 			lblBonjour.setFont(new Font("Snap ITC", Font.BOLD, 24));
 			lblBonjour.setForeground(Color.WHITE);
-			lblBonjour.setBounds(60, 16, 297, 59);
+			lblBonjour.setBounds(60, 16, 500, 59);
 			contentPane.add(lblBonjour);
 			
 			/* EditorPane des taches */
