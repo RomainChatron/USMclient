@@ -10,6 +10,10 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import vInterface._Task;
+import vInterfaceDB._TaskDB;
+
 import java.awt.Toolkit;
 import java.awt.Color;
 import javax.swing.JLabel;
@@ -17,12 +21,15 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Task extends JFrame {
 
 	String nameTask="";
 	private static final long serialVersionUID = 1L;
-	
+	/*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable(){
 			public void run(){
@@ -30,9 +37,9 @@ public class Task extends JFrame {
 				form.setVisible(true);
 			}
 		});
-	}
+	}*/
 
-		public Task(){
+		public Task(HashMap<String, Object> rmi, ArrayList<_Task> listTask) throws RemoteException{
 			getContentPane().setBackground(new Color(0, 102, 204));
 			setIconImage(Toolkit.getDefaultToolkit().getImage(Task.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 			setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -48,12 +55,14 @@ public class Task extends JFrame {
 					case 0:
 						return Boolean.class;
 					case 1:
-						return String.class;
+						return int.class;
 					case 2:
 						return String.class;
 					case 3:
 						return String.class;
 					case 4:
+						return String.class;
+					case 5:
 						return String.class;
 
 					default:
@@ -64,6 +73,7 @@ public class Task extends JFrame {
 			table.setModel(model);
 			table.setRowHeight(20);
 			model.addColumn("Tâche effectué");
+			model.addColumn("id Tâche");
 			model.addColumn("Nom");
 			model.addColumn("Description");
 			model.addColumn("DeadLine");
@@ -72,13 +82,15 @@ public class Task extends JFrame {
 						
 			//the Row
 			int i = 0;
-			while(i <= 5){
+			while(i < listTask.size()){
 				model.addRow(new Object[0]);
 				model.setValueAt(false, i, 0);
-				model.setValueAt("Our row"+(i+1), i, 1);
-				model.setValueAt("Our Column 2", i, 2);
-				model.setValueAt("Our Column 3", i, 3);
-				model.setValueAt("Our Column 4", i, 4);
+				model.setValueAt(listTask.get(i).getIdT(), i, 1);
+				model.setValueAt(listTask.get(i).getName(), i, 2);
+				model.setValueAt(listTask.get(i).getDesc(), i, 3);
+				model.setValueAt(listTask.get(i).getDeadLine(), i, 4);
+				model.setValueAt(listTask.get(i).getIdG(), i, 5);
+				model.setValueAt(listTask.get(i).getTtString(), i, 6);
 				i++;
 			}
 			
@@ -94,7 +106,7 @@ public class Task extends JFrame {
 				jButton[j] = new JButton("SubTask");
 				
 				//Get the Name of our Task
-				nameTask = model.getValueAt(j, 1).toString();
+				//nameTask = model.getValueAt(j, 1).toString();
 				
 				jButton[j].addActionListener(new ActionListener() {
 					@Override
@@ -131,12 +143,14 @@ public class Task extends JFrame {
 								case 0:
 									return Boolean.class;
 								case 1:
-									return String.class;
+									return int.class;
 								case 2:
 									return String.class;
 								case 3:
 									return String.class;
 								case 4:
+									return String.class;
+								case 5:
 									return String.class;
 
 								default:
@@ -149,6 +163,7 @@ public class Task extends JFrame {
 						tableST.setModel(modelST);
 						tableST.setRowHeight(20);
 						modelST.addColumn("isDone");
+						modelST.addColumn("idSubTask");
 						modelST.addColumn("Name");
 						modelST.addColumn("Description");
 						modelST.addColumn("DeadLine");
@@ -233,9 +248,15 @@ public class Task extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					for(int i = 0; i < table.getRowCount(); i++){
 						Boolean checked = Boolean.valueOf(table.getValueAt(i, 0).toString());
-						String col = table.getValueAt(i, 1).toString();
+						int id = (int) table.getValueAt(i, 1);
 						if(checked){
-							JOptionPane.showMessageDialog(null, col);
+							try {
+								((_TaskDB)rmi.get("TaskDB")).removeTask(id);
+							} catch (RemoteException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
+							JOptionPane.showMessageDialog(null, "La tâche "+id+"a bien été validé");
 						}
 					}
 				}
