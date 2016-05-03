@@ -75,7 +75,7 @@ public class GroupChat extends JFrame {
 			((_ChatServer)rmi.get("ChatServer")).register(this.nomChat, leChat);
 			
 			setTitle("Ultimate Society Messenger");
-			setIconImage(Toolkit.getDefaultToolkit().getImage(GroupChat.class.getResource("/appT\u00E9moin/images/fleches-echange.gif")));
+			setIconImage(Toolkit.getDefaultToolkit().getImage(GroupChat.class.getResource("/appTemoin1/images/fleches-echange.gif")));
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			setBounds(100, 100, 979, 722);
 			contentPane = new JPanel();
