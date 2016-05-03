@@ -25,7 +25,6 @@ public class ChatC extends UnicastRemoteObject implements _ChatC {
 
 	@Override
 	public void postMessage(String message) throws RemoteException {
-		System.out.println("On est sur ChatC : " + message);
 		fenetre.displayMessage(message);
 	}
 

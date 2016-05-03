@@ -67,6 +67,11 @@ public class GroupChat extends JFrame {
 			this.moi = moi ;
 			leChat = new ChatC(this, nomChat);
 			
+			String membres = "\r\n";
+			for(int i = 0 ; i < group.getListMember().size() ; i++) {
+				membres += "- " + group.getListMember().get(i).getUserName() + "\r\n";
+			}
+			
 			((_ChatServer)rmi.get("ChatServer")).register(this.nomChat, leChat);
 			
 			setTitle("Ultimate Society Messenger");
@@ -84,10 +89,11 @@ public class GroupChat extends JFrame {
 			txtrTest.setText("");
 			txtrTest.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 			txtrTest.setBounds(242, 68, 671, 407);
+			txtrTest.setEditable(false);
 			contentPane.add(txtrTest);
 			
 			txtrcrireIci = new JTextArea();
-			txtrcrireIci.setText(" <User> : \u00E9crire ici...");
+			txtrcrireIci.setText("Ecrire ici");
 			txtrcrireIci.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 			txtrcrireIci.setBounds(427, 491, 487, 114);
 			contentPane.add(txtrcrireIci);
@@ -97,6 +103,7 @@ public class GroupChat extends JFrame {
 				public void actionPerformed(ActionEvent arg0) {
 					try {
 						((_ChatServer)rmi.get("ChatServer")).postMessage(nomChat, moi.getUserName() + " : " + txtrcrireIci.getText());
+						txtrcrireIci.setText("");
 					} catch (RemoteException e) {
 						e.printStackTrace();
 					}
@@ -144,10 +151,11 @@ public class GroupChat extends JFrame {
 			contentPane.add(lblNewLabel_1);
 			
 			JTextArea txtrDakaya = new JTextArea();
-			txtrDakaya.setText("\r\n  - Dakaya\r\n  - ProOF\r\n  - Laziness\r\n  - L\u00E9aH\r\n  - Fanny\r\n  - Anass");
+			txtrDakaya.setText(membres);
 			txtrDakaya.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 			txtrDakaya.setBackground(new Color(0, 153, 204));
 			txtrDakaya.setBounds(15, 144, 187, 254);
+			txtrDakaya.setEditable(false);
 			contentPane.add(txtrDakaya);
 			
 			JLabel lblNewLabel_2 = new JLabel("");
